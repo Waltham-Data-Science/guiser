@@ -1,0 +1,74 @@
+name: Setup Repository
+
+on:
+  push:
+    paths:
+      - 'config.yaml'  # or any other config file path
+
+jobs:
+
+  setup_repository:
+    runs-on: ubuntu-latest
+    # Skip first run which is triggered on the creation from template
+    if: github.run_number > 1
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Retrieve Repository Info
+        run: |
+          # Extract repository name from GitHub variables
+          REPO_NAME=${GITHUB_REPOSITORY_NAME}
+          echo "REPO_NAME=$REPO_NAME" >> $GITHUB_ENV
+
+      - name: Parse configuration file
+        run: |
+          # Using yq to extract values from YAML
+          LICENSE=$(yq e '.repository.license' config.yaml)
+          echo "LICENSE=$LICENSE" >> $GITHUB_ENV
+          echo "Setting up ${{ env.REPO_NAME }} with $LICENSE license"
+
+      - name: Set up license
+        run: |
+          cp _setup/licenses/${{ env.LICENSE }}.txt LICENSE
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'  # Use the latest version of Python 3
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml jinja2
+
+      - name: Parse configuration and replace variables
+        run: |
+          python _setup/replace_variables.py config.yaml
+
+      - name: Delete _setup folder
+        run: |
+          if [ -d "_setup" ]; then
+            rm -rf _setup
+            echo "_setup folder deleted."
+          else
+            echo "_setup folder not found, skipping deletion."
+          fi
+
+      - name: Delete config.yaml
+        run: |
+          if [ -f "config.yaml" ]; then
+            rm config.yaml
+            echo "config.yaml deleted."
+          else
+            echo "config.yaml not found, skipping deletion."
+          fi
+
+      - name: Commit changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Setup repository based on configuration"
+          git push

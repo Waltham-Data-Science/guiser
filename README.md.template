@@ -1,0 +1,9 @@
+# {{toolbox_name}}
+[![Version Number](https://img.shields.io/github/v/release/{{ repo_owner }}/{{ repo_name }}?label=version)](https://github.com/{{ repo_owner }}/{{ repo_name }}/releases/latest)
+[![View {{toolbox_name}} on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)]({{fex_url}})
+[![MATLAB Tests](.github/badges/tests.svg)](https://github.com/{{ repo_owner }}/{{ repo_name }}/actions/workflows/run_tests.yml)
+[![codecov](https://codecov.io/gh/{{ repo_owner }}/{{ repo_name }}/graph/badge.svg?token={{ codecov_token }})](https://codecov.io/gh/{{ repo_owner }}/{{ repo_name }})
+[![MATLAB Code Issues](.github/badges/code_issues.svg)](https://github.com/{{ repo_owner }}/{{ repo_name }}/security/code-scanning)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://gitHub.com/{{ repo_owner }}/{{ repo_name }}/graphs/commit-activity)
+
+{{toolbox_description}}
