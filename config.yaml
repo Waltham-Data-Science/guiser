@@ -1,6 +1,6 @@
 # General GitHub Repository Settings
 repository:
-  license: MIT      # Select a license from the options below
+  license: CC-BY-NC-4.0      # Select a license from the options below
   # License Options:
   # - None
   # - AGPL-3.0 
@@ -18,13 +18,13 @@ repository:
 
 # MATLAB Toolbox Settings
 matlab_toolbox:
-  namespace_name: mytoolbox                         # A unique namespace for your toolbox
-  toolbox_name: MyToolbox                           # Name of the MATLAB toolbox                  
-  author_name: John Doe                     
-  author_email: johndoe@example.com         
-  author_company: John Doe Inc.                     # Author's company or organization
-  toolbox_summary: A short summary of what the toolbox does
+  namespace_name: guiser                         # A unique namespace for your toolbox
+  toolbox_name: guiser                           # Name of the MATLAB toolbox                  
+  author_name: Waltham Data Science                     
+  author_email: info@walthamdatascience.com         
+  author_company: Waltham Data Science                     # Author's company or organization
+  toolbox_summary: A GUI package where most components are serialized for easier cross-platform development
   toolbox_description: |
-    A detailed description of your MATLAB toolbox.
-    This can span multiple lines to provide users with enough information
-    on what your toolbox offers and how it can be used.
+    GUISER - GUI / Serialized toolbox. Allows one to specify GUI elements and links
+    to data structures with JSON. Only a few actions must be specified by code, allowing
+    easier cross-platform development.
