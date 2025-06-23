@@ -1,3 +1,7 @@
+# GUISER - GUI SERialized toolbox
+
+A toolbox for creating serialized graphical user interfaces in Matlab (and Python in the future), making cross-platform development easier.
+
 # Matlab-Toolbox
 
 Template project for developing a MATLAB toolbox with git. This project includes:
