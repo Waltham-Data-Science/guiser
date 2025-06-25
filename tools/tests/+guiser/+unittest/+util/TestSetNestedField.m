@@ -15,7 +15,7 @@ classdef TestSetNestedField < matlab.unittest.TestCase
             s_arr.a(3).b = struct('c', 30);
             testCase.ArrayStruct = s_arr;
             
-            testCase.TestObject = ndi.unittest.util.SimpleTestClass(10);
+            testCase.TestObject = guiser.unittest.util.SimpleTestClass(10);
         end
     end
 

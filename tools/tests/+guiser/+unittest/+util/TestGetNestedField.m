@@ -19,7 +19,7 @@ classdef TestGetNestedField < matlab.unittest.TestCase
             testCase.ArrayStruct = s_arr;
             
             % Fixture for object property testing
-            testCase.TestObject = ndi.unittest.util.SimpleTestClass(10);
+            testCase.TestObject = guiser.unittest.util.SimpleTestClass(10);
             testCase.TestObject.addprop('NestedProp');
             testCase.TestObject.NestedProp = struct('f', 5);
         end
