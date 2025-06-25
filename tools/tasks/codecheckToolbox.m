@@ -1,5 +1,5 @@
 function codecheckToolbox()
     installMatBox()
-    projectRootDirectory = {{namespace_name}}tools.projectdir();
+    projectRootDirectory = guisertools.projectdir();
     matbox.tasks.codecheckToolbox(projectRootDirectory)
 end

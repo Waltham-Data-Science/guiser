@@ -1,7 +1,7 @@
 function versionStr = toolboxversion()
 % toolboxversion - Get the version identifier for the openMINDS toolbox
 
-    rootPath = {{namespace_name}}.toolboxdir();
+    rootPath = guiser.toolboxdir();
     contentsFile = fullfile(rootPath, 'Contents.m');
 
     if ~isfile(contentsFile)

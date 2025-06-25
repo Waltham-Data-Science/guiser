@@ -4,6 +4,6 @@ function packageToolbox(releaseType, versionString)
         versionString {mustBeTextScalar} = "";
     end
     installMatBox()
-    projectRootDirectory = {{namespace_name}}tools.projectdir();
+    projectRootDirectory = guisertools.projectdir();
     matbox.tasks.packageToolbox(projectRootDirectory, releaseType, versionString)
 end
