@@ -12,18 +12,18 @@ function mustHaveOnlyFields(structInstance, allowedFieldNames)
 %           allowed field name.
 %
 %   Throws:
-%       MException with identifier 'ndi:validators:mustHaveOnlyFields:ExtraFields'
+%       MException with identifier 'guiser.validators:mustHaveOnlyFields:ExtraFields'
 %       if one or more fields in STRUCTINSTANCE are not found in ALLOWEDFIELDNAMES.
 %
 %   Example:
 %       myStruct.name = 'Test';
 %       myStruct.value = 10;
 %       allowed = {'name', 'value', 'type'};
-%       ndi.validators.mustHaveOnlyFields(myStruct, allowed); % Passes
+%       guiser.validators.mustHaveOnlyFields(myStruct, allowed); % Passes
 %
 %       myStruct.extraField = true;
 %       try
-%           ndi.validators.mustHaveOnlyFields(myStruct, allowed);
+%           guiser.validators.mustHaveOnlyFields(myStruct, allowed);
 %       catch ME
 %           disp(ME.message); % Displays: Input struct contains unexpected field(s) not in the allowed list: "extraField".
 %       end
@@ -37,7 +37,7 @@ end
 if ~isempty(allowedFieldNames)
     isCharOrString = cellfun(@(x) (ischar(x) && isrow(x)) || (isstring(x) && isscalar(x)), allowedFieldNames);
     if ~all(isCharOrString)
-        error('ndi:validators:mustHaveOnlyFields:InvalidAllowedNamesInput', ...
+        error('guiser.validators:mustHaveOnlyFields:InvalidAllowedNamesInput', ...
               'ALLOWEDFIELDNAMES must be a cell array of character row vectors or scalar strings.');
     end
 end
@@ -51,11 +51,11 @@ extraFields = setdiff(actualFieldNames, allowedFieldNamesChar);
 
 if ~isempty(extraFields)
     if numel(extraFields) == 1
-        error('ndi:validators:mustHaveOnlyFields:ExtraField', ...
+        error('guiser.validators:mustHaveOnlyFields:ExtraField', ...
               'Input struct contains an unexpected field not in the allowed list: "%s".', extraFields{1});
     else
         extraFieldsStr = strjoin(cellfun(@(x) ['"', x, '"'], extraFields, 'UniformOutput', false), ', ');
-        error('ndi:validators:mustHaveOnlyFields:ExtraFields', ...
+        error('guiser.validators:mustHaveOnlyFields:ExtraFields', ...
               'Input struct contains unexpected field(s) not in the allowed list: %s.', extraFieldsStr);
     end
 end

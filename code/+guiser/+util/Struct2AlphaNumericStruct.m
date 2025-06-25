@@ -2,8 +2,8 @@ function S_out = Struct2AlphaNumericStruct(S_in, options)
 %STRUCT2ALPHANUMERICSTRUCT Converts an arbitrary structure array to one containing
 %only alphanumeric data.
 %
-%   S_OUT = ndi.util.Struct2AlphaNumericStruct(S_IN)
-%   S_OUT = ndi.util.Struct2AlphaNumericStruct(S_IN, 'Delimiter', DELIM)
+%   S_OUT = guiser.util.Struct2AlphaNumericStruct(S_IN)
+%   S_OUT = guiser.util.Struct2AlphaNumericStruct(S_IN, 'Delimiter', DELIM)
 %
 %   Inputs:
 %       S_IN (struct): The input structure array to convert. Can be any size.
@@ -75,7 +75,7 @@ function convertedValue = convertElementValueRecursive(value, currentPath, delim
             else
                 firstNonStringIdx = find(~cellfun(@(x) (ischar(x) && (isrow(x) || isempty(x))) || (isstring(x) && isscalar(x)), value), 1);
                 firstNonStringType = class(value{firstNonStringIdx});
-                error('ndi:util:Struct2AlphaNumericStruct:InvalidCellContent', ...
+                error('guiser:util:Struct2AlphaNumericStruct:InvalidCellContent', ...
                       'Field "%s" is a cell array that does not exclusively contain text. Encountered type: %s.', ...
                       currentPath, firstNonStringType);
             end
@@ -106,7 +106,7 @@ function convertedValue = convertElementValueRecursive(value, currentPath, delim
     elseif isnumeric(value) || islogical(value) || ischar(value)
         convertedValue = value;
     else
-        error('ndi:util:Struct2AlphaNumericStruct:UnsupportedType', ...
+        error('guiser:util:Struct2AlphaNumericStruct:UnsupportedType', ...
               'Field "%s" contains an unsupported data type: %s.', ...
               currentPath, class(value));
     end

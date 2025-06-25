@@ -26,7 +26,7 @@ classdef StructSerializable < handle
                 propName = propNames{i};
                 propValue = obj.(propName);
 
-                if isa(propValue, 'ndi.util.StructSerializable')
+                if isa(propValue, 'guiser.util.StructSerializable')
                     if isscalar(propValue)
                         S.(propName) = propValue.toStruct();
                     else 
@@ -81,10 +81,10 @@ classdef StructSerializable < handle
             end
             
             try
-                alphaS = ndi.util.Struct2AlphaNumericStruct(S, 'Delimiter', obj.CellStrDelimiter);
+                alphaS = guiser.util.Struct2AlphaNumericStruct(S, 'Delimiter', obj.CellStrDelimiter);
             catch ME
-                if strcmp(ME.identifier, 'MATLAB:UndefinedFunction') && contains(ME.message, 'ndi.util.Struct2AlphaNumericStruct')
-                    error('StructSerializable:UtilityNotFound', 'The utility function ndi.util.Struct2AlphaNumericStruct was not found.');
+                if strcmp(ME.identifier, 'MATLAB:UndefinedFunction') && contains(ME.message, 'guiser.util.Struct2AlphaNumericStruct')
+                    error('StructSerializable:UtilityNotFound', 'The utility function guiser.util.Struct2AlphaNumericStruct was not found.');
                 else
                     rethrow(ME);
                 end
@@ -104,10 +104,10 @@ classdef StructSerializable < handle
                 return;
             end
             
-            ndi.validators.mustHaveOnlyFields(structArray(1), allowedFields);
+            guiser.validators.mustHaveOnlyFields(structArray(1), allowedFields);
 
             if errorIfFieldNotPresent
-                ndi.validators.mustHaveFields(structArray(1), allowedFields);
+                guiser.validators.mustHaveFields(structArray(1), allowedFields);
             end
         end
 
@@ -125,7 +125,7 @@ classdef StructSerializable < handle
             obj = feval(className); 
             objProps = properties(obj);
 
-            ndi.util.StructSerializable.validateStructArrayFields(S_in, objProps, options.errorIfFieldNotPresent);
+            guiser.util.StructSerializable.validateStructArrayFields(S_in, objProps, options.errorIfFieldNotPresent);
             
             fieldNames_S_in = fieldnames(S_in);
             for i = 1:numel(fieldNames_S_in)
@@ -146,7 +146,7 @@ classdef StructSerializable < handle
                         if ~isempty(propMeta.Validation) && ~isempty(propMeta.Validation.Class)
                             propMetaClass = propMeta.Validation.Class;
                             propTypeStr = propMetaClass.Name;
-                            if propMetaClass <= ?ndi.util.StructSerializable
+                            if propMetaClass <= ?guiser.util.StructSerializable
                                 isSSubclass = true;
                             end
                         end
@@ -154,13 +154,13 @@ classdef StructSerializable < handle
                         if isstruct(S_in.(fn)) && isSSubclass
                             if isscalar(S_in.(fn))
                                 % Recursive call for a scalar nested object
-                                obj.(fn) = ndi.util.StructSerializable.fromStruct(propTypeStr, S_in.(fn), 'errorIfFieldNotPresent',options.errorIfFieldNotPresent);
+                                obj.(fn) = guiser.util.StructSerializable.fromStruct(propTypeStr, S_in.(fn), 'errorIfFieldNotPresent',options.errorIfFieldNotPresent);
                             else
                                 % Loop through the struct array for a nested object array
                                 struct_array_in = S_in.(fn);
                                 obj_array = feval(propTypeStr).empty(0,0); % Create typed empty array
                                 for k = 1:numel(struct_array_in)
-                                    obj_array(k) = ndi.util.StructSerializable.fromStruct(propTypeStr, struct_array_in(k), 'errorIfFieldNotPresent',options.errorIfFieldNotPresent);
+                                    obj_array(k) = guiser.util.StructSerializable.fromStruct(propTypeStr, struct_array_in(k), 'errorIfFieldNotPresent',options.errorIfFieldNotPresent);
                                 end
                                 obj.(fn) = reshape(obj_array, size(struct_array_in));
                             end
@@ -190,7 +190,7 @@ classdef StructSerializable < handle
             % called by the custom override in a subclass.
             if ~options.dispatch
                 S_in = alphaS_in;
-                obj = ndi.util.StructSerializable.fromStruct(className, S_in, 'errorIfFieldNotPresent', options.errorIfFieldNotPresent);
+                obj = guiser.util.StructSerializable.fromStruct(className, S_in, 'errorIfFieldNotPresent', options.errorIfFieldNotPresent);
                 return;
             end
 
@@ -210,7 +210,7 @@ classdef StructSerializable < handle
             else
                 % The subclass does NOT have a custom override. Use the default behavior.
                 S_in = alphaS_in;
-                obj = ndi.util.StructSerializable.fromStruct(className, S_in, 'errorIfFieldNotPresent', options.errorIfFieldNotPresent);
+                obj = guiser.util.StructSerializable.fromStruct(className, S_in, 'errorIfFieldNotPresent', options.errorIfFieldNotPresent);
             end
         end
     end

@@ -1,5 +1,5 @@
 classdef TestGetNestedField < matlab.unittest.TestCase
-%TestGetNested Comprehensive unit tests for the ndi.util.getNested function.
+%TestGetNested Comprehensive unit tests for the guiser.util.getNested function.
 
     properties
         SimpleStruct
@@ -29,19 +29,19 @@ classdef TestGetNestedField < matlab.unittest.TestCase
 
         function testSingleValueGet(testCase)
             % Test getting single scalar values from various path types.
-            testCase.verifyEqual(ndi.util.getNestedField(testCase.SimpleStruct, 'a'), 1);
-            testCase.verifyEqual(ndi.util.getNestedField(testCase.SimpleStruct, 'b.d.e'), 3);
-            testCase.verifyEqual(ndi.util.getNestedField(testCase.ArrayStruct, 'a(2).b.c'), 20);
-            testCase.verifyEqual(ndi.util.getNestedField(testCase.TestObject, 'Prop1'), 10);
-            testCase.verifyEqual(ndi.util.getNestedField(testCase.TestObject, 'NestedProp.f'), 5);
+            testCase.verifyEqual(guiser.util.getNestedField(testCase.SimpleStruct, 'a'), 1);
+            testCase.verifyEqual(guiser.util.getNestedField(testCase.SimpleStruct, 'b.d.e'), 3);
+            testCase.verifyEqual(guiser.util.getNestedField(testCase.ArrayStruct, 'a(2).b.c'), 20);
+            testCase.verifyEqual(guiser.util.getNestedField(testCase.TestObject, 'Prop1'), 10);
+            testCase.verifyEqual(guiser.util.getNestedField(testCase.TestObject, 'NestedProp.f'), 5);
         end
 
         function testComplexValueGet(testCase)
             % Test getting non-scalar values like structs and arrays.
-            st = ndi.util.getNestedField(testCase.ArrayStruct, 'a(1).b');
+            st = guiser.util.getNestedField(testCase.ArrayStruct, 'a(1).b');
             testCase.verifyEqual(st, struct('c',10));
             
-            arr = ndi.util.getNestedField(testCase.ArrayStruct, 'a');
+            arr = guiser.util.getNestedField(testCase.ArrayStruct, 'a');
             testCase.verifyEqual(arr, testCase.ArrayStruct.a);
             testCase.verifySize(arr, [1 3]);
         end
@@ -52,12 +52,12 @@ classdef TestGetNestedField < matlab.unittest.TestCase
             s = testCase.ArrayStruct;
 
             % Test with the full colon ':'
-            vals_cell_full = ndi.util.getNestedField(s, 'a(:).b.c');
+            vals_cell_full = guiser.util.getNestedField(s, 'a(:).b.c');
             testCase.verifyClass(vals_cell_full, 'cell', 'Did not return a cell array for full colon path.');
             testCase.verifyEqual(vals_cell_full, {10, 20, 30});
             
             % Test with a numerical range M:N
-            vals_cell_range = ndi.util.getNestedField(s, 'a(1:2).b.c');
+            vals_cell_range = guiser.util.getNestedField(s, 'a(1:2).b.c');
             testCase.verifyClass(vals_cell_range, 'cell', 'Did not return a cell array for M:N colon path.');
             testCase.verifyEqual(vals_cell_range, {10, 20});
         end
@@ -68,14 +68,14 @@ classdef TestGetNestedField < matlab.unittest.TestCase
             s_array = testCase.ArrayStruct;
             
             % --- Test for non-existent paths ---
-            testCase.verifyError(@() ndi.util.getNestedField(s_simple, 'x.y.z'), 'getNestedField:pathNotFound');
-            testCase.verifyError(@() ndi.util.getNestedField(s_array, 'a(4).b'), 'getNestedField:pathNotFound');
-            testCase.verifyError(@() ndi.util.getNestedField(s_array, 'a(:).z'), 'getNestedField:pathNotFound');
+            testCase.verifyError(@() guiser.util.getNestedField(s_simple, 'x.y.z'), 'getNestedField:pathNotFound');
+            testCase.verifyError(@() guiser.util.getNestedField(s_array, 'a(4).b'), 'getNestedField:pathNotFound');
+            testCase.verifyError(@() guiser.util.getNestedField(s_array, 'a(:).z'), 'getNestedField:pathNotFound');
 
             % --- Test for syntax errors (should be caught and re-thrown) ---
-            testCase.verifyError(@() ndi.util.getNestedField(s_simple, 'a..b'), 'getNestedField:pathNotFound');
-            testCase.verifyError(@() ndi.util.getNestedField(s_simple, 'a(1))'), 'getNestedField:pathNotFound');
-            testCase.verifyError(@() ndi.util.getNestedField(s_simple, 'a(1)junk'), 'getNestedField:pathNotFound');
+            testCase.verifyError(@() guiser.util.getNestedField(s_simple, 'a..b'), 'getNestedField:pathNotFound');
+            testCase.verifyError(@() guiser.util.getNestedField(s_simple, 'a(1))'), 'getNestedField:pathNotFound');
+            testCase.verifyError(@() guiser.util.getNestedField(s_simple, 'a(1)junk'), 'getNestedField:pathNotFound');
         end
 
     end

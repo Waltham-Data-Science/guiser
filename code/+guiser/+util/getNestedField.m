@@ -18,25 +18,25 @@ function value = getNestedField(S_in, fieldString)
 %       s.a(3).b = struct('c', 30);
 %
 %       % --- Get a single value (returns the value itself) ---
-%       val = ndi.util.getNestedField(s, 'a(1).b.c'); % val is 10
+%       val = guiser.util.getNestedField(s, 'a(1).b.c'); % val is 10
 %
 %       % --- Get multiple values (returns a single cell array) ---
-%       vals_cell_all = ndi.util.getNestedField(s, 'a(:).b.c');
+%       vals_cell_all = guiser.util.getNestedField(s, 'a(:).b.c');
 %       % vals_cell_all is {[10], [20], [30]}
 %
-%       vals_cell_range = ndi.util.getNestedField(s, 'a(1:2).b.c');
+%       vals_cell_range = guiser.util.getNestedField(s, 'a(1:2).b.c');
 %       % vals_cell_range is {[10], [20]}
 %
 %       % --- Get complex data types ---
-%       struct_val = ndi.util.getNestedField(s, 'a(2).b');
+%       struct_val = guiser.util.getNestedField(s, 'a(2).b');
 %       % struct_val is struct('c', 20)
 %
-%       array_val = ndi.util.getNestedField(s, 'a');
+%       array_val = guiser.util.getNestedField(s, 'a');
 %       % array_val is the 1x3 struct array s.a
 %
 %       % --- Error Handling ---
 %       try
-%           ndi.util.getNestedField(s, 'a(4).b.c');
+%           guiser.util.getNestedField(s, 'a(4).b.c');
 %       catch e
 %           disp(e.message); % Displays "The path "a(4).b.c" does not exist..."
 %       end
@@ -47,7 +47,7 @@ function value = getNestedField(S_in, fieldString)
     end
     
     try
-        subs = ndi.util.private.stringToSubstruct(fieldString);
+        subs = guiser.util.private.stringToSubstruct(fieldString);
         
         % Find the first indexing operation that will produce multiple outputs.
         is_multi_index = @(s) strcmp(s.type, '()') && ...

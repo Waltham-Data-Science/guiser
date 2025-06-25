@@ -18,25 +18,25 @@ function S_out = setNestedField(S_in, fieldString, value, options)
 %       s.a(1).b = 10; s.a(2).b = 20;
 %
 %       % --- Assign a single value ---
-%       s_new = ndi.util.setNestedField(s, 'a(1).b', 99);
+%       s_new = guiser.util.setNestedField(s, 'a(1).b', 99);
 %       % s_new.a(1).b is 99
 %
 %       % --- Create a new field ---
-%       s_new = ndi.util.setNestedField(s, 'a(1).c.d', 'new value');
+%       s_new = guiser.util.setNestedField(s, 'a(1).c.d', 'new value');
 %       % s_new.a(1).c is now struct('d', 'new value')
 %
 %       % --- Assign a single value TO a range ---
-%       s_new = ndi.util.setNestedField(s, 'a(1:2).b', 99);
+%       s_new = guiser.util.setNestedField(s, 'a(1:2).b', 99);
 %       % s_new.a(1).b is 99, and s_new.a(2).b is 99.
 %
 %       % --- Distribute a cell array of values across a range ---
 %       vals = {'hello', 'world'};
-%       s_new = ndi.util.setNestedField(s, 'a(1:2).b', vals, 'SetRange', true);
+%       s_new = guiser.util.setNestedField(s, 'a(1:2).b', vals, 'SetRange', true);
 %       % s_new.a(1).b is 'hello', and s_new.a(2).b is 'world'.
 %
 %       % --- Use 'ErrIfDoesNotExist' ---
 %       try
-%           ndi.util.setNestedField(s, 'x.y', 1, 'ErrIfDoesNotExist', true);
+%           guiser.util.setNestedField(s, 'x.y', 1, 'ErrIfDoesNotExist', true);
 %       catch e
 %           disp(e.message); % "The field path "x.y" does not exist..."
 %       end
@@ -53,10 +53,10 @@ function S_out = setNestedField(S_in, fieldString, value, options)
         error('setNestedField:invalidInputType', 'First input must be a struct or an object.');
     end
     
-    subs = ndi.util.private.stringToSubstruct(fieldString);
+    subs = guiser.util.private.stringToSubstruct(fieldString);
 
     if options.ErrIfDoesNotExist
-        if ~ndi.util.isNestedField(S_in, fieldString)
+        if ~guiser.util.isNestedField(S_in, fieldString)
             error('setNestedField:fieldNotFound', ...
                 'The field path "%s" does not exist and ''ErrIfDoesNotExist'' is true.', fieldString);
         end

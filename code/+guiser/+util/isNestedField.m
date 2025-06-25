@@ -45,7 +45,7 @@ function tf = isNestedField(S_in, fieldString)
         fieldString {mustBeTextScalar, mustBeNonempty}
     end
     try
-        subs = ndi.util.private.stringToSubstruct(fieldString);
+        subs = guiser.util.private.stringToSubstruct(fieldString);
 
         % Find the first indexing operation that will produce multiple outputs.
         is_multi_index = @(s) strcmp(s.type, '()') && ...

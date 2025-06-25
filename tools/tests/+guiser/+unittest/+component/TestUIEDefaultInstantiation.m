@@ -5,68 +5,68 @@ classdef TestUIEDefaultInstantiation < matlab.unittest.TestCase
     methods (Test)
 
         function testCreateUIButton(testCase)
-            obj = ndi.gui.component.internal.uie.UIButton();
-            testCase.verifyClass(obj, ?ndi.gui.component.internal.uie.UIButton);
+            obj = guiser.component.UIButton();
+            testCase.verifyClass(obj, ?guiser.component.UIButton);
         end
 
         function testCreateUICheckbox(testCase)
-            obj = ndi.gui.component.internal.uie.UICheckbox();
-            testCase.verifyClass(obj, ?ndi.gui.component.internal.uie.UICheckbox);
+            obj = guiser.component.UICheckbox();
+            testCase.verifyClass(obj, ?guiser.component.UICheckbox);
         end
 
         function testCreateUIContextMenu(testCase)
-            obj = ndi.gui.component.internal.uie.UIContextMenu();
-            testCase.verifyClass(obj, ?ndi.gui.component.internal.uie.UIContextMenu);
+            obj = guiser.component.UIContextMenu();
+            testCase.verifyClass(obj, ?guiser.component.UIContextMenu);
         end
 
         function testCreateUIDropdown(testCase)
-            obj = ndi.gui.component.internal.uie.UIDropdown();
-            testCase.verifyClass(obj, ?ndi.gui.component.internal.uie.UIDropdown);
+            obj = guiser.component.UIDropdown();
+            testCase.verifyClass(obj, ?guiser.component.UIDropdown);
         end
 
         function testCreateUIEditField(testCase)
-            obj = ndi.gui.component.internal.uie.UIEditField();
-            testCase.verifyClass(obj, ?ndi.gui.component.internal.uie.UIEditField);
+            obj = guiser.component.UIEditField();
+            testCase.verifyClass(obj, ?guiser.component.UIEditField);
         end
 
         function testCreateUIFigure(testCase)
-            obj = ndi.gui.component.internal.uie.UIFigure();
-            testCase.verifyClass(obj, ?ndi.gui.component.internal.uie.UIFigure);
+            obj = guiser.component.UIFigure();
+            testCase.verifyClass(obj, ?guiser.component.UIFigure);
         end
 
         function testCreateUIGridLayout(testCase)
-            obj = ndi.gui.component.internal.uie.UIGridLayout();
-            testCase.verifyClass(obj, ?ndi.gui.component.internal.uie.UIGridLayout);
+            obj = guiser.component.UIGridLayout();
+            testCase.verifyClass(obj, ?guiser.component.UIGridLayout);
         end
 
         function testCreateUILabel(testCase)
-            obj = ndi.gui.component.internal.uie.UILabel();
-            testCase.verifyClass(obj, ?ndi.gui.component.internal.uie.UILabel);
+            obj = guiser.component.UILabel();
+            testCase.verifyClass(obj, ?guiser.component.UILabel);
         end
 
         function testCreateUIListbox(testCase)
-            obj = ndi.gui.component.internal.uie.UIListbox();
-            testCase.verifyClass(obj, ?ndi.gui.component.internal.uie.UIListbox);
+            obj = guiser.component.UIListbox();
+            testCase.verifyClass(obj, ?guiser.component.UIListbox);
         end
 
         function testCreateUIPanel(testCase)
-            obj = ndi.gui.component.internal.uie.UIPanel();
-            testCase.verifyClass(obj, ?ndi.gui.component.internal.uie.UIPanel);
+            obj = guiser.component.UIPanel();
+            testCase.verifyClass(obj, ?guiser.component.UIPanel);
         end
 
         function testCreateUITab(testCase)
-            obj = ndi.gui.component.internal.uie.UITab();
-            testCase.verifyClass(obj, ?ndi.gui.component.internal.uie.UITab);
+            obj = guiser.component.UITab();
+            testCase.verifyClass(obj, ?guiser.component.UITab);
         end
 
         function testCreateUITabGroup(testCase)
-            obj = ndi.gui.component.internal.uie.UITabGroup();
-            testCase.verifyClass(obj, ?ndi.gui.component.internal.uie.UITabGroup);
+            obj = guiser.component.UITabGroup();
+            testCase.verifyClass(obj, ?guiser.component.UITabGroup);
         end
 
         function testCreateUITextArea(testCase)
-            obj = ndi.gui.component.internal.uie.UITextArea();
-            testCase.verifyClass(obj, ?ndi.gui.component.internal.uie.UITextArea);
+            obj = guiser.component.UITextArea();
+            testCase.verifyClass(obj, ?guiser.component.UITextArea);
         end
 
     end

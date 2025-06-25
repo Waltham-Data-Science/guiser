@@ -1,4 +1,4 @@
-classdef UIElement < ndi.util.StructSerializable & matlab.mixin.Heterogeneous
+classdef UIElement < guiser.util.StructSerializable & matlab.mixin.Heterogeneous
     % UIELEMENT A base class for describing a generic UI element.
 
     properties (Constant)
@@ -25,14 +25,14 @@ classdef UIElement < ndi.util.StructSerializable & matlab.mixin.Heterogeneous
 
     methods
         function value = get.IsContainer(obj)
-            value = logical(isa(obj,'ndi.gui.component.internal.uie.mixin.UIContainer'));
+            value = logical(isa(obj,'guiser.component.mixin.UIContainer'));
         end
         
         function value = get.creatorFcn(obj)
             % Get the full class name of the current object instance
             fullClassName = class(obj);
             
-            if strcmp(fullClassName, 'ndi.gui.component.internal.uie.UIElement')
+            if strcmp(fullClassName, 'guiser.component.UIElement')
                 value = 'none';
             else
                 parts = strsplit(fullClassName, '.');
@@ -42,7 +42,7 @@ classdef UIElement < ndi.util.StructSerializable & matlab.mixin.Heterogeneous
 
         function h = createComponent(obj, app)
             % Create the MATLAB UI component for this object
-            if isa(obj,'ndi.gui.component.internal.uie.UIFigure')
+            if isa(obj,'guiser.component.UIFigure')
                 % no parent
                 obj.ParentTag = '';
                 obj.ParentUuid = '';

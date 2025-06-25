@@ -12,7 +12,7 @@ function mustHaveFields(structInstance, requiredFieldNames)
 %           name that must be present in STRUCTINSTANCE.
 %
 %   Throws:
-%       MException with identifier 'ndi:validators:mustHaveFields:MissingFields'
+%       MException with identifier 'guiser.validators:mustHaveFields:MissingFields'
 %       if one or more required fields are not found in STRUCTINSTANCE.
 %
 %   Example:
@@ -20,7 +20,7 @@ function mustHaveFields(structInstance, requiredFieldNames)
 %       myStruct.value = 10;
 %       required = {'name', 'value', 'type'};
 %       try
-%           ndi.validators.mustHaveFields(myStruct, required);
+%           guiser.validators.mustHaveFields(myStruct, required);
 %       catch ME
 %           disp(ME.message); % Displays: Input struct is missing the following required field(s): "type".
 %       end
@@ -34,7 +34,7 @@ end
 if ~isempty(requiredFieldNames)
     isCharOrString = cellfun(@(x) (ischar(x) && isrow(x)) || (isstring(x) && isscalar(x)), requiredFieldNames);
     if ~all(isCharOrString)
-        error('ndi:validators:mustHaveFields:InvalidFieldNamesInput', ...
+        error('guiser.validators:mustHaveFields:InvalidFieldNamesInput', ...
               'REQUIREDFIELDNAMES must be a cell array of character row vectors or scalar strings.');
     end
 end
@@ -49,11 +49,11 @@ end
 
 if ~isempty(missingFields)
     if numel(missingFields) == 1
-        error('ndi:validators:mustHaveFields:MissingField', ...
+        error('guiser.validators:mustHaveFields:MissingField', ...
               'Input struct is missing the required field: "%s".', missingFields{1});
     else
         missingFieldsStr = strjoin(cellfun(@(x) ['"', x, '"'], missingFields, 'UniformOutput', false), ', ');
-        error('ndi:validators:mustHaveFields:MissingFields', ...
+        error('guiser.validators:mustHaveFields:MissingFields', ...
               'Input struct is missing the following required field(s): %s.', missingFieldsStr);
     end
 end
