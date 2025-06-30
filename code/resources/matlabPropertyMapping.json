@@ -1,0 +1,184 @@
+[
+  {
+    "className": "guiser.component.UIFigure",
+    "mappings": [
+      { "guiserTerm": "Name", "matlabTerm": "Name" },
+      { "guiserTerm": "Position", "matlabTerm": "Position" },
+      { "guiserTerm": "Visible", "matlabTerm": "Visible" },
+      { "guiserTerm": "Tag", "matlabTerm": "Tag" },
+      { "guiserTerm": "UserData", "matlabTerm": "UserData" },
+      { "guiserTerm": "Units", "matlabTerm": "Units" },
+      { "guiserTerm": "Color", "matlabTerm": "Color" },
+      { "guiserTerm": "CloseRequestFcn", "matlabTerm": "CloseRequestFcn" }
+    ]
+  },
+  {
+    "className": "guiser.component.UIGridLayout",
+    "mappings": [
+      { "guiserTerm": "Position", "matlabTerm": "Position" },
+      { "guiserTerm": "Visible", "matlabTerm": "Visible" },
+      { "guiserTerm": "Tag", "matlabTerm": "Tag" },
+      { "guiserTerm": "UserData", "matlabTerm": "UserData" },
+      { "guiserTerm": "Units", "matlabTerm": "Units" },
+      { "guiserTerm": "Layout", "matlabTerm": "Layout" },
+      { "guiserTerm": "BackgroundColor", "matlabTerm": "BackgroundColor" },
+      { "guiserTerm": "RowHeight", "matlabTerm": "RowHeight" },
+      { "guiserTerm": "ColumnWidth", "matlabTerm": "ColumnWidth" },
+      { "guiserTerm": "Padding", "matlabTerm": "Padding" },
+      { "guiserTerm": "RowSpacing", "matlabTerm": "RowSpacing" },
+      { "guiserTerm": "ColumnSpacing", "matlabTerm": "ColumnSpacing" }
+    ]
+  },
+  {
+    "className": "guiser.component.UIPanel",
+    "mappings": [
+      { "guiserTerm": "Title", "matlabTerm": "Title" },
+      { "guiserTerm": "Position", "matlabTerm": "Position" },
+      { "guiserTerm": "Visible", "matlabTerm": "Visible" },
+      { "guiserTerm": "Tag", "matlabTerm": "Tag" },
+      { "guiserTerm": "UserData", "matlabTerm": "UserData" },
+      { "guiserTerm": "Units", "matlabTerm": "Units" },
+      { "guiserTerm": "Layout", "matlabTerm": "Layout" },
+      { "guiserTerm": "BackgroundColor", "matlabTerm": "BackgroundColor" },
+      { "guiserTerm": "FontWeight", "matlabTerm": "FontWeight" },
+      { "guiserTerm": "FontAngle", "matlabTerm": "FontAngle" },
+      { "guiserTerm": "FontSize", "matlabTerm": "FontSize" },
+      { "guiserTerm": "FontColor", "matlabTerm": "FontColor" },
+      { "guiserTerm": "FontName", "matlabTerm": "FontName" },
+      { "guiserTerm": "BorderType", "matlabTerm": "BorderType" }
+    ]
+  },
+  {
+    "className": "guiser.component.UITabGroup",
+    "mappings": [
+      { "guiserTerm": "Position", "matlabTerm": "Position" },
+      { "guiserTerm": "Visible", "matlabTerm": "Visible" },
+      { "guiserTerm": "Tag", "matlabTerm": "Tag" },
+      { "guiserTerm": "UserData", "matlabTerm": "UserData" },
+      { "guiserTerm": "Units", "matlabTerm": "Units" },
+      { "guiserTerm": "Layout", "matlabTerm": "Layout" },
+      { "guiserTerm": "TabLocation", "matlabTerm": "TabLocation" },
+      { "guiserTerm": "SelectedTab", "matlabTerm": "SelectedTab" }
+    ]
+  },
+  {
+    "className": "guiser.component.UITab",
+    "mappings": [
+      { "guiserTerm": "Title", "matlabTerm": "Title" },
+      { "guiserTerm": "Position", "matlabTerm": "Position" },
+      { "guiserTerm": "Visible", "matlabTerm": "Visible" },
+      { "guiserTerm": "Tag", "matlabTerm": "Tag" },
+      { "guiserTerm": "UserData", "matlabTerm": "UserData" },
+      { "guiserTerm": "Units", "matlabTerm": "Units" },
+      { "guiserTerm": "Layout", "matlabTerm": "Layout" },
+      { "guiserTerm": "BackgroundColor", "matlabTerm": "BackgroundColor" }
+    ]
+  },
+  {
+    "className": "guiser.component.UIButton",
+    "mappings": [
+      { "guiserTerm": "Text", "matlabTerm": "Text" },
+      { "guiserTerm": "Icon", "matlabTerm": "Icon" },
+      { "guiserTerm": "IconAlignment", "matlabTerm": "IconAlignment" },
+      { "guiserTerm": "Position", "matlabTerm": "Position" },
+      { "guiserTerm": "Visible", "matlabTerm": "Visible" },
+      { "guiserTerm": "Tag", "matlabTerm": "Tag" },
+      { "guiserTerm": "UserData", "matlabTerm": "UserData" },
+      { "guiserTerm": "Layout", "matlabTerm": "Layout" },
+      { "guiserTerm": "BackgroundColor", "matlabTerm": "BackgroundColor" },
+      { "guiserTerm": "FontWeight", "matlabTerm": "FontWeight" },
+      { "guiserTerm": "FontAngle", "matlabTerm": "FontAngle" },
+      { "guiserTerm": "FontSize", "matlabTerm": "FontSize" },
+      { "guiserTerm": "FontColor", "matlabTerm": "FontColor" },
+      { "guiserTerm": "FontName", "matlabTerm": "FontName" },
+      { "guiserTerm": "Enable", "matlabTerm": "Enable" },
+      { "guiserTerm": "Tooltip", "matlabTerm": "Tooltip" },
+      { "guiserTerm": "ButtonPushedFcn", "matlabTerm": "ButtonPushedFcn" }
+    ]
+  },
+  {
+    "className": "guiser.component.UILabel",
+    "mappings": [
+      { "guiserTerm": "Text", "matlabTerm": "Text" },
+      { "guiserTerm": "Position", "matlabTerm": "Position" },
+      { "guiserTerm": "Visible", "matlabTerm": "Visible" },
+      { "guiserTerm": "Tag", "matlabTerm": "Tag" },
+      { "guiserTerm": "UserData", "matlabTerm": "UserData" },
+      { "guiserTerm": "Units", "matlabTerm": "Units" },
+      { "guiserTerm": "Layout", "matlabTerm": "Layout" },
+      { "guiserTerm": "BackgroundColor", "matlabTerm": "BackgroundColor" },
+      { "guiserTerm": "FontWeight", "matlabTerm": "FontWeight" },
+      { "guiserTerm": "FontAngle", "matlabTerm": "FontAngle" },
+      { "guiserTerm": "FontSize", "matlabTerm": "FontSize" },
+      { "guiserTerm": "FontColor", "matlabTerm": "FontColor" },
+      { "guiserTerm": "FontName", "matlabTerm": "FontName" },
+      { "guiserTerm": "HorizontalAlignment", "matlabTerm": "HorizontalAlignment" },
+      { "guiserTerm": "VerticalAlignment", "matlabTerm": "VerticalAlignment" }
+    ]
+  },
+  {
+    "className": "guiser.component.UIEditField",
+    "mappings": [
+      { "guiserTerm": "Value", "matlabTerm": "Value" },
+      { "guiserTerm": "Placeholder", "matlabTerm": "Placeholder" },
+      { "guiserTerm": "HorizontalAlignment", "matlabTerm": "HorizontalAlignment" },
+      { "guiserTerm": "Position", "matlabTerm": "Position" },
+      { "guiserTerm": "Visible", "matlabTerm": "Visible" },
+      { "guiserTerm": "Tag", "matlabTerm": "Tag" },
+      { "guiserTerm": "UserData", "matlabTerm": "UserData" },
+      { "guiserTerm": "Units", "matlabTerm": "Units" },
+      { "guiserTerm": "Layout", "matlabTerm": "Layout" },
+      { "guiserTerm": "BackgroundColor", "matlabTerm": "BackgroundColor" },
+      { "guiserTerm": "FontWeight", "matlabTerm": "FontWeight" },
+      { "guiserTerm": "FontAngle", "matlabTerm": "FontAngle" },
+      { "guiserTerm": "FontSize", "matlabTerm": "FontSize" },
+      { "guiserTerm": "FontColor", "matlabTerm": "FontColor" },
+      { "guiserTerm": "FontName", "matlabTerm": "FontName" },
+      { "guiserTerm": "Enable", "matlabTerm": "Enable" },
+      { "guiserTerm": "Tooltip", "matlabTerm": "Tooltip" },
+      { "guiserTerm": "ValueChangedFcn", "matlabTerm": "ValueChangedFcn" },
+      { "guiserTerm": "ValueChangingFcn", "matlabTerm": "ValueChangingFcn" }
+    ]
+  },
+  {
+    "className": "guiser.component.UICheckbox",
+    "mappings": [
+      { "guiserTerm": "Text", "matlabTerm": "Text" },
+      { "guiserTerm": "Value", "matlabTerm": "Value" },
+      { "guiserTerm": "Position", "matlabTerm": "Position" },
+      { "guiserTerm": "Visible", "matlabTerm": "Visible" },
+      { "guiserTerm": "Tag", "matlabTerm": "Tag" },
+      { "guiserTerm": "UserData", "matlabTerm": "UserData" },
+      { "guiserTerm": "Units", "matlabTerm": "Units" },
+      { "guiserTerm": "Layout", "matlabTerm": "Layout" },
+      { "guiserTerm": "BackgroundColor", "matlabTerm": "BackgroundColor" },
+      { "guiserTerm": "FontWeight", "matlabTerm": "FontWeight" },
+      { "guiserTerm": "FontAngle", "matlabTerm": "FontAngle" },
+      { "guiserTerm": "FontSize", "matlabTerm": "FontSize" },
+      { "guiserTerm": "FontColor", "matlabTerm": "FontColor" },
+      { "guiserTerm": "FontName", "matlabTerm": "FontName" },
+      { "guiserTerm": "Enable", "matlabTerm": "Enable" },
+      { "guiserTerm": "Tooltip", "matlabTerm": "Tooltip" },
+      { "guiserTerm": "ValueChangedFcn", "matlabTerm": "ValueChangedFcn" }
+    ]
+  },
+  {
+    "className": "guiser.component.UIListbox",
+    "mappings": [
+      { "guiserTerm": "Items", "matlabTerm": "Items" },
+      { "guiserTerm": "Value", "matlabTerm": "Value" },
+      { "guiserTerm": "Multiselect", "matlabTerm": "Multiselect" },
+      { "guiserTerm": "Position", "matlabTerm": "Position" },
+      { "guiserTerm": "Visible", "matlabTerm": "Visible" },
+      { "guiserTerm": "Tag", "matlabTerm": "Tag" },
+      { "guiserTerm": "UserData", "matlabTerm": "UserData" },
+      { "guiserTerm": "Units", "matlabTerm": "Units" },
+      { "guiserTerm": "Layout", "matlabTerm": "Layout" },
+      { "guiserTerm": "BackgroundColor", "matlabTerm": "BackgroundColor" },
+      { "guiserTerm": "Enable", "matlabTerm": "Enable" },
+      { "guiserTerm": "Tooltip", "matlabTerm": "Tooltip" },
+      { "guiserTerm": "ValueChangedFcn", "matlabTerm": "ValueChangedFcn" },
+      { "guiserTerm": "DoubleClickFcn", "matlabTerm": "DoubleClickFcn" }
+    ]
+  }
+]

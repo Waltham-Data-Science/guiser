@@ -1,0 +1,246 @@
+{
+  "dataStructure": {
+    "gui": {
+      "textBox1": "",
+      "textBox2": "",
+      "textBox3": "",
+      "radioPanel": "Radio Option 1",
+      "checkbox1": false,
+      "checkbox2": false,
+      "checkbox3": false,
+      "sampleListbox": "Item A"
+    }
+  },
+  "guiComponents": [
+    {
+      "className": "guiser.component.UIFigure",
+      "properties": {
+        "Name": "guiser.App.guiserExample",
+        "Position": [100, 100, 500, 400],
+        "Tag": "guiserExampleApp",
+        "ParentTag": ""
+      }
+    },
+    {
+      "className": "guiser.component.UIGridLayout",
+      "properties": {
+        "Tag": "mainGrid",
+        "ParentTag": "guiserExampleApp",
+        "RowHeight": ["1x", 50],
+        "ColumnWidth": ["1x"]
+      }
+    },
+    {
+      "className": "guiser.component.UITabGroup",
+      "properties": {
+        "ParentTag": "mainGrid",
+        "Tag": "mainTabGroup",
+        "Layout": { "Row": 1, "Column": 1 }
+      }
+    },
+    {
+      "className": "guiser.component.UIPanel",
+      "properties": {
+        "ParentTag": "mainGrid",
+        "Tag": "footerPanel",
+        "Layout": { "Row": 2, "Column": 1 }
+      }
+    },
+    {
+        "className": "guiser.component.UIButton",
+        "properties": {
+          "ParentTag": "footerPanel",
+          "Text": "Previous",
+          "Tag": "prevButton",
+          "Position": [10, 10, 100, 30]
+        }
+    },
+    {
+        "className": "guiser.component.UIButton",
+        "properties": {
+          "ParentTag": "footerPanel",
+          "Text": "Next",
+          "Tag": "nextButton",
+          "Position": [390, 10, 100, 30]
+        }
+    },
+    {
+      "className": "guiser.component.UITab",
+      "properties": {
+        "ParentTag": "mainTabGroup",
+        "Title": "Tab 1",
+        "Tag": "tab1"
+      }
+    },
+    {
+      "className": "guiser.component.UIGridLayout",
+      "properties": {
+        "Tag": "tab1Grid",
+        "ParentTag": "tab1",
+        "RowHeight": [30, 30, 30, "1x"],
+        "ColumnWidth": [100, "1x"]
+      }
+    },
+    {
+      "className": "guiser.component.UILabel",
+      "properties": {
+        "ParentTag": "tab1Grid",
+        "Text": "Text Box 1:",
+        "Layout": { "Row": 1, "Column": 1 }
+      }
+    },
+    {
+      "className": "guiser.component.UIEditField",
+      "properties": {
+        "ParentTag": "tab1Grid",
+        "Tag": "textBox1",
+        "Layout": { "Row": 1, "Column": 2 }
+      }
+    },
+    {
+      "className": "guiser.component.UILabel",
+      "properties": {
+        "ParentTag": "tab1Grid",
+        "Text": "Text Box 2:",
+        "Layout": { "Row": 2, "Column": 1 }
+      }
+    },
+    {
+      "className": "guiser.component.UIEditField",
+      "properties": {
+        "ParentTag": "tab1Grid",
+        "Tag": "textBox2",
+        "Layout": { "Row": 2, "Column": 2 }
+      }
+    },
+    {
+      "className": "guiser.component.UILabel",
+      "properties": {
+        "ParentTag": "tab1Grid",
+        "Text": "Text Box 3:",
+        "Layout": { "Row": 3, "Column": 1 }
+      }
+    },
+    {
+      "className": "guiser.component.UIEditField",
+      "properties": {
+        "ParentTag": "tab1Grid",
+        "Tag": "textBox3",
+        "Layout": { "Row": 3, "Column": 2 }
+      }
+    },
+    {
+      "className": "guiser.component.UITab",
+      "properties": {
+        "ParentTag": "mainTabGroup",
+        "Title": "Tab 2",
+        "Tag": "tab2"
+      }
+    },
+    {
+      "className": "guiser.component.UIGridLayout",
+      "properties": {
+        "Tag": "tab2Grid",
+        "ParentTag": "tab2",
+        "RowHeight": ["1x", "1x"],
+        "ColumnWidth": ["1x"]
+      }
+    },
+    {
+      "className": "guiser.component.UIPanel",
+      "properties": {
+        "ParentTag": "tab2Grid",
+        "Title": "Radio Buttons",
+        "Tag": "radioPanel",
+        "Layout": { "Row": 1, "Column": 1 }
+      }
+    },
+    {
+      "className": "guiser.component.UICheckbox",
+      "properties": {
+        "ParentTag": "radioPanel",
+        "Text": "Radio Option 1",
+        "Position": [10, 70, 150, 22]
+      }
+    },
+    {
+      "className": "guiser.component.UICheckbox",
+      "properties": {
+        "ParentTag": "radioPanel",
+        "Text": "Radio Option 2",
+        "Position": [10, 45, 150, 22]
+      }
+    },
+    {
+      "className": "guiser.component.UICheckbox",
+      "properties": {
+        "ParentTag": "radioPanel",
+        "Text": "Radio Option 3",
+        "Position": [10, 20, 150, 22]
+      }
+    },
+    {
+      "className": "guiser.component.UIPanel",
+      "properties": {
+        "ParentTag": "tab2Grid",
+        "Title": "Checkboxes",
+        "Tag": "checkPanel",
+        "Layout": { "Row": 2, "Column": 1 }
+      }
+    },
+    {
+      "className": "guiser.component.UICheckbox",
+      "properties": {
+        "ParentTag": "checkPanel",
+        "Text": "Checkbox 1",
+        "Tag": "checkbox1",
+        "Position": [10, 70, 150, 22]
+      }
+    },
+    {
+      "className": "guiser.component.UICheckbox",
+      "properties": {
+        "ParentTag": "checkPanel",
+        "Text": "Checkbox 2",
+        "Tag": "checkbox2",
+        "Position": [10, 45, 150, 22]
+      }
+    },
+    {
+      "className": "guiser.component.UICheckbox",
+      "properties": {
+        "ParentTag": "checkPanel",
+        "Text": "Checkbox 3",
+        "Tag": "checkbox3",
+        "Position": [10, 20, 150, 22]
+      }
+    },
+    {
+      "className": "guiser.component.UITab",
+      "properties": {
+        "ParentTag": "mainTabGroup",
+        "Title": "Tab 3",
+        "Tag": "tab3"
+      }
+    },
+    {
+      "className": "guiser.component.UIGridLayout",
+      "properties": {
+        "Tag": "tab3Grid",
+        "ParentTag": "tab3",
+        "RowHeight": ["1x"],
+        "ColumnWidth": ["1x"]
+      }
+    },
+    {
+      "className": "guiser.component.UIListbox",
+      "properties": {
+        "ParentTag": "tab3Grid",
+        "Tag": "sampleListbox",
+        "Layout": { "Row": 1, "Column": 1 },
+        "Items": ["Item A", "Item B", "Item C"],
+        "Value": "Item A"
+      }
+    }
+  ]
+}
