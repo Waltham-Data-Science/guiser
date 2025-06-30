@@ -10,6 +10,6 @@ classdef UITabGroup < guiser.component.mixin.UIContainer & ...
         TabLocation (1,:) char {mustBeMember(TabLocation,{'top','bottom','left','right'})} = 'top'
 
         % SelectedTab - The Tag of the UITab that should be selected by default.
-        SelectedTab (1,:) char = ''
+        SelectedTab (1,1) string = missing
     end
 end

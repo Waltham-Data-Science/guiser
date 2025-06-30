@@ -12,7 +12,7 @@ classdef UIButton < guiser.component.UIElement & ...
 
     properties
         % ButtonPushedFcn - The name of the function to be executed when the button is pushed.
-        ButtonPushedFcn (1,:) char = ''
+        ButtonPushedFcn (1,1) string = missing
     end
    
 end

@@ -6,7 +6,7 @@ classdef UIDoubleClickFcn < handle
         %
         % This should be a character vector with the name of a public method
         % in the corresponding TabController class.
-        DoubleClickFcn (1,:) char = ''
+        DoubleClickFcn (1,1) string = missing
     end
 
 end

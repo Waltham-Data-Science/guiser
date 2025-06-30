@@ -86,7 +86,8 @@
       "properties": {
         "ParentTag": "tab1Grid",
         "Text": "Text Box 1:",
-        "Layout": { "Row": 1, "Column": 1 }
+        "Layout": { "Row": 1, "Column": 1 },
+        "Tag": "labelTextBox1"
       }
     },
     {
@@ -102,7 +103,8 @@
       "properties": {
         "ParentTag": "tab1Grid",
         "Text": "Text Box 2:",
-        "Layout": { "Row": 2, "Column": 1 }
+        "Layout": { "Row": 2, "Column": 1 },
+        "Tag": "labelTextBox2"
       }
     },
     {
@@ -118,7 +120,8 @@
       "properties": {
         "ParentTag": "tab1Grid",
         "Text": "Text Box 3:",
-        "Layout": { "Row": 3, "Column": 1 }
+        "Layout": { "Row": 3, "Column": 1 },
+        "Tag": "labelTextBox3"
       }
     },
     {
@@ -147,35 +150,39 @@
       }
     },
     {
-      "className": "guiser.component.UIPanel",
+      "className": "guiser.component.UIButtonGroup",
       "properties": {
         "ParentTag": "tab2Grid",
         "Title": "Radio Buttons",
         "Tag": "radioPanel",
-        "Layout": { "Row": 1, "Column": 1 }
+        "Layout": { "Row": 1, "Column": 1 },
+        "SelectedTag": "radioOption1"
       }
     },
     {
-      "className": "guiser.component.UICheckbox",
+      "className": "guiser.component.UIRadioButton",
       "properties": {
         "ParentTag": "radioPanel",
         "Text": "Radio Option 1",
+        "Tag": "radioOption1",
         "Position": [10, 70, 150, 22]
       }
     },
     {
-      "className": "guiser.component.UICheckbox",
+      "className": "guiser.component.UIRadioButton",
       "properties": {
         "ParentTag": "radioPanel",
         "Text": "Radio Option 2",
+        "Tag": "radioOption2",
         "Position": [10, 45, 150, 22]
       }
     },
     {
-      "className": "guiser.component.UICheckbox",
+      "className": "guiser.component.UIRadioButton",
       "properties": {
         "ParentTag": "radioPanel",
         "Text": "Radio Option 3",
+        "Tag": "radioOption3",
         "Position": [10, 20, 150, 22]
       }
     },

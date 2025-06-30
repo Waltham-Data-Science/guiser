@@ -24,7 +24,7 @@ classdef ExampleApp < guiser.App.class.base
             toolboxPath = guiser.toolboxdir();
             
             % Construct the full path to the JSON definition file.
-            jsonPath = fullfile(toolboxPath, 'resources', 'apps', 'guiserExampleApp.json')
+            jsonPath = fullfile(toolboxPath, 'resources', 'apps', 'guiserExampleApp.json');
             
             % Call the superclass constructor with the file path.
             app@guiser.App.class.base(jsonPath);

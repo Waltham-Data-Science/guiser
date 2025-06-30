@@ -30,6 +30,11 @@ end
 function convertedValue = convertElementValueRecursive(value, currentPath, delimiter)
 %convertElementValueRecursive Helper to process individual elements.
 
+    if ismissing(value)
+        convertedValue = '<missing>';
+        return;
+    end
+
     if isstruct(value)
         if isempty(value)
             convertedValue = value;

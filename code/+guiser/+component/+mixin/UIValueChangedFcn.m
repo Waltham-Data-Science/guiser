@@ -10,7 +10,7 @@ classdef UIValueChangedFcn < handle
         %
         % This should be a character vector with the name of a public method
         % in the corresponding TabController class.
-        ValueChangedFcn (1,:) char = ''
+        ValueChangedFcn (1,1) string = missing
     end
 
 end

@@ -10,7 +10,7 @@ classdef UIContextMenu < guiser.component.mixin.UIContainer & ...
 
     properties
         % Tag - A string to identify this context menu object.
-        OpeningFcn (:,1) char = ''
+        OpeningFcn (1,1) string = missing
     end
     
     methods (Static)

@@ -65,6 +65,29 @@ classdef TestUIEStructSerialization < matlab.unittest.TestCase
             testCase.runSerializationTest(guiser.component.UITextArea());
         end
 
+        function testSerializationWithMissingValues(testCase)
+            % This test verifies that properties set to 'missing' are
+            % correctly serialized and deserialized.
+            
+            % 1. Create a button and set optional properties to missing
+            buttonObj = guiser.component.UIButton();
+            buttonObj.ButtonPushedFcn = missing;
+            buttonObj.Position = missing;
+
+            % 2. Run the full serialization/deserialization test
+            testCase.runSerializationTest(buttonObj);
+
+            % 3. Explicitly check the deserialized object
+            alphaS = buttonObj.toAlphaNumericStruct();
+            objFromAlphaS = guiser.util.StructSerializable.fromAlphaNumericStruct(class(buttonObj), alphaS);
+
+            % 4. Verify that the properties are still 'missing'
+            testCase.verifyTrue(ismissing(objFromAlphaS.ButtonPushedFcn), ...
+                'ButtonPushedFcn should be missing after deserialization.');
+            testCase.verifyTrue(ismissing(objFromAlphaS.Position), ...
+                'Position should be missing after deserialization.');
+        end
+
     end
 
     methods (Access = private)

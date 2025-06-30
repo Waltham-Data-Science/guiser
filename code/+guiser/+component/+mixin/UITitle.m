@@ -5,7 +5,7 @@ classdef UITitle < handle
 
     properties
         % Title - The text that appears as the title of the component.
-        Title (1,:) char = ''
+        Title (1,1) string = missing
     end
 
 end

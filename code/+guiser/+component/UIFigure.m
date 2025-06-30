@@ -11,7 +11,7 @@ classdef UIFigure < guiser.component.mixin.UIContainer & ...
         % The actual property name for a uifigure's color.
         Color {guiser.validators.mustBeValidColor(Color)} = [0.94 0.94 0.94]
         
-        CloseRequestFcn (1,:) char = ''
+        CloseRequestFcn (1,1) string = missing
         WidthMin (1,1) {mustBeNumeric, mustBeNonnegative, mustBeFinite} = 0
         WidthMax (1,1) {mustBeNumeric, mustBeNonnegative} = Inf
         HeightMin (1,1) {mustBeNumeric, mustBeNonnegative, mustBeFinite} = 0

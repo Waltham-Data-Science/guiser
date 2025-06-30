@@ -7,6 +7,7 @@ classdef base < matlab.apps.AppBase
         GUIDefinition (1,:) struct % An array of component definitions
         Data (1,1) struct
         UIHandles (1,1) struct
+        ComponentObjects (1,1) struct % Stores the guiser UIElement objects
         Figure (1,1) matlab.ui.Figure
     end
     
@@ -53,6 +54,7 @@ classdef base < matlab.apps.AppBase
         function buildUI(app)
             % BUILDUI Orchestrates the GUI build from a flat component list.
             app.UIHandles = struct();
+            app.ComponentObjects = struct();
             
             isRoot = arrayfun(@(def) isempty(def.properties.ParentTag), app.GUIDefinition);
             
@@ -64,13 +66,23 @@ classdef base < matlab.apps.AppBase
             
             % Create the guiser object and then the graphics handle
             rootComponentObj = guiser.util.StructSerializable.fromStruct(rootDef.className, rootDef.properties);
-            app.Figure = rootComponentObj.createComponent(app); % Corrected call
+            app.Figure = rootComponentObj.createComponent(app);
             app.UIHandles.(rootComponentObj.Tag) = app.Figure;
+            app.ComponentObjects.(rootComponentObj.Tag) = rootComponentObj;
             
             drawnow;
 
             % Build all children of the root.
             app.buildChildrenOf(rootDef.properties.Tag);
+
+            % --- Post-Build Step ---
+            % Call doPostBuild on all created component objects
+            componentTags = fieldnames(app.ComponentObjects);
+            for i = 1:numel(componentTags)
+                tag = componentTags{i};
+                componentObj = app.ComponentObjects.(tag);
+                componentObj.doPostBuild(app);
+            end
         end
 
         function buildChildrenOf(app, parentTag)
@@ -81,10 +93,11 @@ classdef base < matlab.apps.AppBase
                 if strcmp(def.properties.ParentTag, parentTag)
                     
                     componentObj = guiser.util.StructSerializable.fromStruct(def.className, def.properties);
-                    h = componentObj.createComponent(app); % Corrected call
+                    h = componentObj.createComponent(app);
                     
                     if ~isempty(componentObj.Tag)
                         app.UIHandles.(def.properties.Tag) = h;
+                        app.ComponentObjects.(def.properties.Tag) = componentObj;
                     end
                     
                     app.buildChildrenOf(def.properties.Tag);

@@ -8,7 +8,7 @@ classdef UIPlaceholder < handle
         % Placeholder - Text that appears in the component when it is empty.
         %
         % This text provides a hint to the user about what to enter.
-        Placeholder (1,:) char = ''
+        Placeholder (1,1) string = missing
     end
 
 end
