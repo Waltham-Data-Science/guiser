@@ -1,6 +1,12 @@
 % UIElement.m
 classdef UIElement < guiser.util.StructSerializable & matlab.mixin.Heterogeneous
     % UIELEMENT A base class for describing a generic UI element.
+    %
+    % This abstract class serves as the foundation for all GUISER component
+    % definitions. It provides common properties like ParentTag and Tag,
+    % handles the serialization to/from structs, and defines the core
+    % interface for creating and configuring MATLAB UI components from
+    % GUISER definitions.
     
     properties (Constant)
         % A list of property names that correspond to callbacks.
@@ -24,11 +30,38 @@ classdef UIElement < guiser.util.StructSerializable & matlab.mixin.Heterogeneous
 
     methods
         function value = get.IsContainer(obj)
+            % get.IsContainer - Determines if the component is a container.
+            %
+            %   Syntax:
+            %       isCont = myUIElement.IsContainer;
+            %
+            %   Description:
+            %       This dependent property returns true if the UIElement object
+            %       inherits from the guiser.component.mixin.UIContainer class,
+            %       and false otherwise. This is used by the framework to
+            %       identify components that can have children.
+            %
+            %   Outputs:
+            %       isCont - A logical scalar (true or false).
             value = logical(isa(obj,'guiser.component.mixin.UIContainer'));
         end
 
         function value = get.creatorFcn(obj)
-            % This get method now contains the special case for UIFigure.
+            % get.creatorFcn - Gets the MATLAB function name to create the component.
+            %
+            %   Syntax:
+            %       fcnName = myUIElement.creatorFcn;
+            %
+            %   Description:
+            %       This dependent property returns the name of the MATLAB UI
+            %       function used to create the graphics object (e.g., 'uibutton',
+            %       'uipanel'). It derives the name from the class name by
+            %       stripping the 'guiser.component.UI' prefix and converting
+            %       to lowercase. It includes a special case for UIFigure to
+            %       return 'uifigure'.
+            %
+            %   Outputs:
+            %       fcnName - A character vector holding the function name.
             if isa(obj, 'guiser.component.UIFigure')
                 value = 'uifigure';
                 return;
@@ -44,7 +77,29 @@ classdef UIElement < guiser.util.StructSerializable & matlab.mixin.Heterogeneous
         end
 
         function h = createComponent(obj, app)
-            % CREATECOMPONENT Creates a MATLAB graphics object from this object's properties.
+            % CREATECOMPONENT Creates and configures a MATLAB graphics object.
+            %
+            %   Syntax:
+            %       h = myUIElement.createComponent(app);
+            %
+            %   Description:
+            %       This is a core method of the framework. It takes a GUISER
+            %       app object, determines the correct parent handle using the
+            %       ParentTag, creates the corresponding MATLAB UI component
+            %       (e.g., uibutton), and then iterates through its own properties
+            %       to set the properties of the newly created graphics handle.
+            %       It translates GUISER property names (e.g., 'FontColor') to
+            %       MATLAB property names (e.g., 'FontColor') using the mapping
+            %       defined in matlabPropertyMapping.json. It also handles
+            %       special cases like creating unique tags and setting up callbacks.
+            %
+            %   Inputs:
+            %       app - An instance of a class inheriting from guiser.App.class.base.
+            %             This provides access to the figure, other UI handles,
+            %             and callback methods.
+            %
+            %   Outputs:
+            %       h - A handle to the newly created MATLAB graphics object.
             arguments
                 obj
                 app (1,1) guiser.App.class.base
@@ -124,6 +179,7 @@ classdef UIElement < guiser.util.StructSerializable & matlab.mixin.Heterogeneous
                 end
                 
                 try
+                    matlabTerm,finalValue
                     set(h, matlabTerm, finalValue);
                 catch ME
                     fprintf(2, 'GUISER DEBUG: Failed to set property "%s" on component tagged "%s".\n', matlabTerm, obj.Tag);
@@ -133,10 +189,25 @@ classdef UIElement < guiser.util.StructSerializable & matlab.mixin.Heterogeneous
         end
 
         function doPostBuild(obj, app)
-            %DOPOSTBUILD Sets properties that depend on the existence of other components.
-            %   This method is called after all components in the app have been created.
-            %   It iterates through its own properties, finds any marked as 'isPostBuild',
-            %   and applies them. Subclasses can override this to add specific logic.
+            %DOPOSTBUILD Sets properties that depend on other components.
+            %
+            %   Syntax:
+            %       myUIElement.doPostBuild(app);
+            %
+            %   Description:
+            %       This method is called by the app's buildUI method AFTER all
+            %       UI components have been created and have handles. It is used
+            %       to set properties that rely on the existence of other
+            %       component handles, which would not be available during the
+            %       initial createComponent call. For example, setting the
+            %       'SelectedObject' of a uibuttongroup requires the handle of
+            %       the child radio button.
+            %
+            %   Inputs:
+            %       app - An instance of a class inheriting from guiser.App.class.base.
+            %             This provides access to the app's UIHandles structure.
+            %
+            %   See also: guiser.App.class.base.buildUI
 
             propList = properties(obj);
             for i = 1:numel(propList)
@@ -165,8 +236,37 @@ classdef UIElement < guiser.util.StructSerializable & matlab.mixin.Heterogeneous
 
     methods (Static)
         function [matlabTerm, isReadOnly, isPostBuild] = getMatlabTerm(className, guiserTerm, options)
-            % GETMATLABTERM Translates a guiser property name to a MATLAB property name
-            % and returns its read-only and post-build status.
+            % GETMATLABTERM Translates a GUISER property to its MATLAB equivalent.
+            %
+            %   Syntax:
+            %       [mTerm, isRO, isPB] = UIElement.getMatlabTerm(className, guiserTerm);
+            %
+            %   Description:
+            %       This static method acts as a centralized dictionary for the
+            %       framework. It reads the 'matlabPropertyMapping.json' file
+            %       and caches the results in a persistent map. Given a GUISER
+            %       class name and a GUISER property name, it returns the
+            %       corresponding MATLAB property name and two flags indicating
+            %       if the property is read-only or should be set in the
+            %       post-build step.
+            %
+            %   Inputs:
+            %       className - The name of the GUISER component class (e.g.,
+            %                   'guiser.component.UIButton').
+            %       guiserTerm - The name of the property in the GUISER class
+            %                    (e.g., 'FontColor').
+            %
+            %   Name-Value Pairs:
+            %       forceReload (logical, default false) - If true, forces a
+            %           reread of the JSON mapping file.
+            %
+            %   Outputs:
+            %       matlabTerm - The corresponding MATLAB property name (e.g.,
+            %                    'FontColor'). Returns empty if no mapping exists.
+            %       isReadOnly - A logical flag that is true if the property
+            %                    should not be set by the framework.
+            %       isPostBuild - A logical flag that is true if the property
+            %                     should be set in the doPostBuild phase.
             arguments
                 className (1,:) char
                 guiserTerm (1,:) char

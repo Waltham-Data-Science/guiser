@@ -8,7 +8,7 @@
       "checkbox1": false,
       "checkbox2": false,
       "checkbox3": false,
-      "sampleListbox": "Item A"
+      "sampleListbox": "Item B"
     }
   },
   "guiComponents": [
@@ -246,7 +246,7 @@
         "Tag": "sampleListbox",
         "Layout": { "Row": 1, "Column": 1 },
         "Items": ["Item A", "Item B", "Item C"],
-        "Value": "Item A"
+        "Value": "Item B"
       }
     }
   ]

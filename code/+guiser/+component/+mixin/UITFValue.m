@@ -7,7 +7,7 @@ classdef UITFValue < handle
 
     properties
         % Value - The current value of the component.
-        Value (1,1) logical = false
+        Value (1,1) {guiser.validators.mustBeLogicalOrMissing} = missing
     end
 
 end
