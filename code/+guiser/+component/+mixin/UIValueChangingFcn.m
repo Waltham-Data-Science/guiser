@@ -9,7 +9,7 @@ classdef UIValueChangingFcn < handle
         %
         % This should be a character vector with the name of a public method
         % in the corresponding TabController class.
-        ValueChangingFcn (1,1) string = missing
+        ValueChangingFcn (1,1) string = "ValueChangingFcn"
     end
 
 end

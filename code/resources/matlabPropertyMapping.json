@@ -41,6 +41,7 @@
       { "guiserTerm": "FontWeight", "matlabTerm": "FontWeight", "isReadOnly": false, "isPostBuild": false },
       { "guiserTerm": "FontAngle", "matlabTerm": "FontAngle", "isReadOnly": false, "isPostBuild": false },
       { "guiserTerm": "FontSize", "matlabTerm": "FontSize", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "FontColor", "matlabTerm": "ForegroundColor", "isReadOnly": false, "isPostBuild": false },
       { "guiserTerm": "FontName", "matlabTerm": "FontName", "isReadOnly": false, "isPostBuild": false },
       { "guiserTerm": "BorderType", "matlabTerm": "BorderType", "isReadOnly": false, "isPostBuild": false }
     ]
@@ -75,7 +76,9 @@
       { "guiserTerm": "Visible", "matlabTerm": "Visible", "isReadOnly": false, "isPostBuild": false },
       { "guiserTerm": "Tag", "matlabTerm": "Tag", "isReadOnly": false, "isPostBuild": false },
       { "guiserTerm": "UserData", "matlabTerm": "UserData", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "Units", "matlabTerm": "Units", "isReadOnly": false, "isPostBuild": false },
       { "guiserTerm": "Layout", "matlabTerm": "Layout", "isReadOnly": true, "isPostBuild": false },
+      { "guiserTerm": "BackgroundColor", "matlabTerm": "BackgroundColor", "isReadOnly": false, "isPostBuild": false },
       { "guiserTerm": "FontWeight", "matlabTerm": "FontWeight", "isReadOnly": false, "isPostBuild": false },
       { "guiserTerm": "FontAngle", "matlabTerm": "FontAngle", "isReadOnly": false, "isPostBuild": false },
       { "guiserTerm": "FontSize", "matlabTerm": "FontSize", "isReadOnly": false, "isPostBuild": false },
@@ -95,7 +98,8 @@
       { "guiserTerm": "Units", "matlabTerm": "Units", "isReadOnly": false, "isPostBuild": false },
       { "guiserTerm": "Layout", "matlabTerm": "Layout", "isReadOnly": false, "isPostBuild": false },
       { "guiserTerm": "TabLocation", "matlabTerm": "TabLocation", "isReadOnly": false, "isPostBuild": false },
-      { "guiserTerm": "SelectedTab", "matlabTerm": "SelectedTab", "isReadOnly": false, "isPostBuild": false }
+      { "guiserTerm": "SelectedTab", "matlabTerm": "SelectedTab", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "SelectionChangedFcn", "matlabTerm": "SelectionChangedFcn", "isReadOnly": false, "isPostBuild": false }
     ]
   },
   {
@@ -130,6 +134,62 @@
       { "guiserTerm": "Enable", "matlabTerm": "Enable", "isReadOnly": false, "isPostBuild": false },
       { "guiserTerm": "Tooltip", "matlabTerm": "Tooltip", "isReadOnly": false, "isPostBuild": false },
       { "guiserTerm": "ButtonPushedFcn", "matlabTerm": "ButtonPushedFcn", "isReadOnly": false, "isPostBuild": false }
+    ]
+  },
+  {
+    "className": "guiser.component.UITabNavigatorButton",
+    "mappings": [
+      { "guiserTerm": "Text", "matlabTerm": "Text", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "Icon", "matlabTerm": "Icon", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "IconAlignment", "matlabTerm": "IconAlignment", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "Position", "matlabTerm": "Position", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "Visible", "matlabTerm": "Visible", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "Tag", "matlabTerm": "Tag", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "UserData", "matlabTerm": "UserData", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "Layout", "matlabTerm": "Layout", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "BackgroundColor", "matlabTerm": "BackgroundColor", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "FontWeight", "matlabTerm": "FontWeight", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "FontAngle", "matlabTerm": "FontAngle", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "FontSize", "matlabTerm": "FontSize", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "FontColor", "matlabTerm": "FontColor", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "FontName", "matlabTerm": "FontName", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "Enable", "matlabTerm": "Enable", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "Tooltip", "matlabTerm": "Tooltip", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "ButtonPushedFcn", "matlabTerm": "ButtonPushedFcn", "isReadOnly": false, "isPostBuild": false }
+    ]
+  },
+  {
+    "className": "guiser.component.UIListboxEditButton",
+    "mappings": [
+      { "guiserTerm": "Text", "matlabTerm": "Text", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "Icon", "matlabTerm": "Icon", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "IconAlignment", "matlabTerm": "IconAlignment", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "Position", "matlabTerm": "Position", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "Visible", "matlabTerm": "Visible", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "Tag", "matlabTerm": "Tag", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "UserData", "matlabTerm": "UserData", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "Layout", "matlabTerm": "Layout", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "BackgroundColor", "matlabTerm": "BackgroundColor", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "FontWeight", "matlabTerm": "FontWeight", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "FontAngle", "matlabTerm": "FontAngle", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "FontSize", "matlabTerm": "FontSize", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "FontColor", "matlabTerm": "FontColor", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "FontName", "matlabTerm": "FontName", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "Enable", "matlabTerm": "Enable", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "Tooltip", "matlabTerm": "Tooltip", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "ButtonPushedFcn", "matlabTerm": "ButtonPushedFcn", "isReadOnly": false, "isPostBuild": false }
+    ]
+  },
+  {
+    "className": "guiser.component.UIMenu",
+    "mappings": [
+      { "guiserTerm": "Text", "matlabTerm": "Text", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "Enable", "matlabTerm": "Enable", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "MenuSelectedFcn", "matlabTerm": "MenuSelectedFcn", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "Separator", "matlabTerm": "Separator", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "Accelerator", "matlabTerm": "Accelerator", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "Tag", "matlabTerm": "Tag", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "UserData", "matlabTerm": "UserData", "isReadOnly": false, "isPostBuild": false }
     ]
   },
   {
@@ -175,6 +235,29 @@
     ]
   },
   {
+    "className": "guiser.component.UITextArea",
+    "mappings": [
+      { "guiserTerm": "Value", "matlabTerm": "Value", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "Placeholder", "matlabTerm": "Placeholder", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "Position", "matlabTerm": "Position", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "Visible", "matlabTerm": "Visible", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "Tag", "matlabTerm": "Tag", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "UserData", "matlabTerm": "UserData", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "Layout", "matlabTerm": "Layout", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "BackgroundColor", "matlabTerm": "BackgroundColor", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "FontWeight", "matlabTerm": "FontWeight", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "FontAngle", "matlabTerm": "FontAngle", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "FontSize", "matlabTerm": "FontSize", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "FontColor", "matlabTerm": "FontColor", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "FontName", "matlabTerm": "FontName", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "Enable", "matlabTerm": "Enable", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "Tooltip", "matlabTerm": "Tooltip", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "ValueChangedFcn", "matlabTerm": "ValueChangedFcn", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "ValueChangingFcn", "matlabTerm": "ValueChangingFcn", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "WordWrap", "matlabTerm": "WordWrap", "isReadOnly": false, "isPostBuild": false }
+    ]
+  },
+  {
     "className": "guiser.component.UICheckbox",
     "mappings": [
       { "guiserTerm": "Text", "matlabTerm": "Text", "isReadOnly": false, "isPostBuild": false },
@@ -183,6 +266,37 @@
       { "guiserTerm": "Visible", "matlabTerm": "Visible", "isReadOnly": false, "isPostBuild": false },
       { "guiserTerm": "Tag", "matlabTerm": "Tag", "isReadOnly": false, "isPostBuild": false },
       { "guiserTerm": "UserData", "matlabTerm": "UserData", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "Layout", "matlabTerm": "Layout", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "BackgroundColor", "matlabTerm": "BackgroundColor", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "FontWeight", "matlabTerm": "FontWeight", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "FontAngle", "matlabTerm": "FontAngle", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "FontSize", "matlabTerm": "FontSize", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "FontColor", "matlabTerm": "FontColor", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "FontName", "matlabTerm": "FontName", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "Enable", "matlabTerm": "Enable", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "Tooltip", "matlabTerm": "Tooltip", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "ValueChangedFcn", "matlabTerm": "ValueChangedFcn", "isReadOnly": false, "isPostBuild": false }
+    ]
+  },
+  {
+    "className": "guiser.component.UIContextMenu",
+    "mappings": [
+      { "guiserTerm": "Tag", "matlabTerm": "Tag", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "UserData", "matlabTerm": "UserData", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "OpeningFcn", "matlabTerm": "MenuOpeningFcn", "isReadOnly": false, "isPostBuild": false }
+    ]
+  },
+  {
+    "className": "guiser.component.UIDropdown",
+    "mappings": [
+      { "guiserTerm": "Items", "matlabTerm": "Items", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "Value", "matlabTerm": "Value", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "Editable", "matlabTerm": "Editable", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "Position", "matlabTerm": "Position", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "Visible", "matlabTerm": "Visible", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "Tag", "matlabTerm": "Tag", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "UserData", "matlabTerm": "UserData", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "Units", "matlabTerm": "Units", "isReadOnly": false, "isPostBuild": false },
       { "guiserTerm": "Layout", "matlabTerm": "Layout", "isReadOnly": false, "isPostBuild": false },
       { "guiserTerm": "BackgroundColor", "matlabTerm": "BackgroundColor", "isReadOnly": false, "isPostBuild": false },
       { "guiserTerm": "FontWeight", "matlabTerm": "FontWeight", "isReadOnly": false, "isPostBuild": false },
@@ -205,6 +319,7 @@
       { "guiserTerm": "Visible", "matlabTerm": "Visible", "isReadOnly": false, "isPostBuild": false },
       { "guiserTerm": "Tag", "matlabTerm": "Tag", "isReadOnly": false, "isPostBuild": false },
       { "guiserTerm": "UserData", "matlabTerm": "UserData", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "Units", "matlabTerm": "Units", "isReadOnly": false, "isPostBuild": false },
       { "guiserTerm": "Layout", "matlabTerm": "Layout", "isReadOnly": false, "isPostBuild": false },
       { "guiserTerm": "BackgroundColor", "matlabTerm": "BackgroundColor", "isReadOnly": false, "isPostBuild": false },
       { "guiserTerm": "Enable", "matlabTerm": "Enable", "isReadOnly": false, "isPostBuild": false },

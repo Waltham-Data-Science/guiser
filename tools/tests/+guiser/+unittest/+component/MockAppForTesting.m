@@ -1,24 +1,51 @@
 % MockAppForTesting.m
 classdef MockAppForTesting < guiser.App.class.base
-% MOCKAPPFORTESTING A mock app that inherits from the base class for testing.
-%
-% This class provides a valid 'app' object for unit tests that call
-% UIElement.createComponent, satisfying the type validation requirement.
+    % MOCKAPPFORTESTING A lightweight app object for unit testing components.
+    % This class creates a temporary, minimal JSON file to satisfy the
+    % superclass constructor, allowing for isolated testing of components
+    % without needing a full app definition.
 
     properties
-        CallbackWasCalled = false
+        TempJsonPath (1,:) char
     end
-    
+
     methods
-        function app = MockAppForTesting(jsonFilePath)
-            % The constructor simply passes the path to a dummy JSON file
-            % up to the superclass constructor.
-            app@guiser.App.class.base(jsonFilePath);
+        function app = MockAppForTesting()
+            % Create a temporary JSON file path as a local variable.
+            tempPath = [tempname, '.json'];
+            
+            % Define the absolute minimum valid JSON structure, which now
+            % includes a single root UIFigure component.
+            minimalDef.dataStructure = struct();
+            rootComponent.className = 'guiser.component.UIFigure';
+            rootComponent.properties.Tag = 'mockRootFigureForTesting';
+            rootComponent.properties.ParentTag = '';
+            rootComponent.properties.Visible = 'off'; % Keep it hidden during tests
+            minimalDef.guiComponents = rootComponent;
+            
+            % Write the JSON file.
+            jsonText = jsonencode(minimalDef);
+            fid = fopen(tempPath, 'w');
+            fprintf(fid, '%s', jsonText);
+            fclose(fid);
+            
+            % Call the superclass constructor FIRST, using the local variable.
+            app@guiser.App.class.base(tempPath);
+            
+            % NOW that the object is constructed, we can set its properties.
+            app.TempJsonPath = tempPath;
         end
-        
-        function aCallbackMethod(app, ~, ~)
-            % A simple callback method to be triggered by the test.
-            app.CallbackWasCalled = true;
+
+        function delete(app)
+            % DELETE Clean up the temporary JSON file.
+            
+            % Call the superclass delete method first.
+            delete@guiser.App.class.base(app);
+            
+            % Delete the temporary file if it still exists.
+            if ~isempty(app.TempJsonPath) && isfile(app.TempJsonPath)
+                delete(app.TempJsonPath);
+            end
         end
     end
 end

@@ -1,4 +1,4 @@
-% mustHaveOnlyFields.m (to be placed in +ndi/+validators/)
+% mustHaveOnlyFields.m
 function mustHaveOnlyFields(structInstance, allowedFieldNames)
 %MUSTHAVEONLYFIELDS Validates that a structure only contains fields from a specified list.
 %   MUSTHAVEONLYFIELDS(STRUCTINSTANCE, ALLOWEDFIELDNAMES) checks if all field
@@ -14,19 +14,6 @@ function mustHaveOnlyFields(structInstance, allowedFieldNames)
 %   Throws:
 %       MException with identifier 'guiser.validators:mustHaveOnlyFields:ExtraFields'
 %       if one or more fields in STRUCTINSTANCE are not found in ALLOWEDFIELDNAMES.
-%
-%   Example:
-%       myStruct.name = 'Test';
-%       myStruct.value = 10;
-%       allowed = {'name', 'value', 'type'};
-%       guiser.validators.mustHaveOnlyFields(myStruct, allowed); % Passes
-%
-%       myStruct.extraField = true;
-%       try
-%           guiser.validators.mustHaveOnlyFields(myStruct, allowed);
-%       catch ME
-%           disp(ME.message); % Displays: Input struct contains unexpected field(s) not in the allowed list: "extraField".
-%       end
 
 arguments
     structInstance (1,1) struct % Ensure it's a scalar struct
@@ -50,14 +37,23 @@ actualFieldNames = fieldnames(structInstance);
 extraFields = setdiff(actualFieldNames, allowedFieldNamesChar);
 
 if ~isempty(extraFields)
+    % Format the list of extra fields and allowed fields for the error message
+    extraFieldsStr = strjoin(cellfun(@(x) ['"', x, '"'], extraFields, 'UniformOutput', false), ', ');
+    allowedFieldsStr = strjoin(cellfun(@(x) ['"', x, '"'], allowedFieldNamesChar, 'UniformOutput', false), ', ');
+
     if numel(extraFields) == 1
-        error('guiser.validators:mustHaveOnlyFields:ExtraField', ...
-              'Input struct contains an unexpected field not in the allowed list: "%s".', extraFields{1});
+        errID = 'guiser:validators:mustHaveOnlyFields:ExtraField';
+        msg = sprintf('Input struct contains an unexpected field: %s. Allowed fields are: %s.', ...
+              extraFieldsStr, allowedFieldsStr);
     else
-        extraFieldsStr = strjoin(cellfun(@(x) ['"', x, '"'], extraFields, 'UniformOutput', false), ', ');
-        error('guiser.validators:mustHaveOnlyFields:ExtraFields', ...
-              'Input struct contains unexpected field(s) not in the allowed list: %s.', extraFieldsStr);
+        errID = 'guiser:validators:mustHaveOnlyFields:ExtraFields';
+        msg = sprintf('Input struct contains unexpected fields: %s. Allowed fields are: %s.', ...
+              extraFieldsStr, allowedFieldsStr);
     end
+    
+    % Create and throw an MException object for a more detailed error report
+    ME = MException(errID, msg);
+    throwAsCaller(ME);
 end
 
 end

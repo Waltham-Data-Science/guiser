@@ -1,14 +1,15 @@
 {
   "dataStructure": {
     "gui": {
-      "textBox1": "",
-      "textBox2": "",
-      "textBox3": "",
-      "radioPanel": "Radio Option 1",
-      "checkbox1": false,
-      "checkbox2": false,
-      "checkbox3": false,
-      "sampleListbox": "Item B"
+      "tab1TextBox1": "",
+      "tab1TextBox2": "",
+      "tab1TextBox3": "",
+      "tab2TextArea": "",
+      "tab3RadioPanel": "Radio Option 1",
+      "tab3Checkbox1": false,
+      "tab3Checkbox2": false,
+      "tab3Checkbox3": false,
+      "tab4SampleListbox": "Item B"
     }
   },
   "guiComponents": [
@@ -18,7 +19,10 @@
         "Name": "guiser.App.guiserExample",
         "Position": [100, 100, 500, 400],
         "Tag": "guiserExampleApp",
-        "ParentTag": ""
+        "ParentTag": "",
+        "Color": [0, 0.1255, 0.3294],
+        "WidthMin": 300,
+        "HeightMin": 400
       }
     },
     {
@@ -27,7 +31,8 @@
         "Tag": "mainGrid",
         "ParentTag": "guiserExampleApp",
         "RowHeight": ["1x", 50],
-        "ColumnWidth": ["1x"]
+        "ColumnWidth": ["1x"],
+        "BackgroundColor": [0, 0.1255, 0.3294]
       }
     },
     {
@@ -43,25 +48,41 @@
       "properties": {
         "ParentTag": "mainGrid",
         "Tag": "footerPanel",
-        "Layout": { "Row": 2, "Column": 1 }
+        "Layout": { "Row": 2, "Column": 1 },
+        "BackgroundColor": [0, 0.1255, 0.3294]
       }
     },
     {
-        "className": "guiser.component.UIButton",
+      "className": "guiser.component.UIGridLayout",
+      "properties": {
+        "Tag": "footerGrid",
+        "ParentTag": "footerPanel",
+        "ColumnWidth": [80, "1x", 80],
+        "RowHeight": ["1x"],
+        "Padding": [10, 5, 10, 5],
+        "BackgroundColor": [0, 0.1255, 0.3294]
+      }
+    },
+    {
+        "className": "guiser.component.UITabNavigatorButton",
         "properties": {
-          "ParentTag": "footerPanel",
+          "ParentTag": "footerGrid",
           "Text": "Previous",
-          "Tag": "prevButton",
-          "Position": [10, 10, 100, 30]
+          "Tag": "prevTabButton",
+          "Layout": { "Row": 1, "Column": 1 },
+          "BackgroundColor": [1, 1, 1],
+          "direction": "previous"
         }
     },
     {
-        "className": "guiser.component.UIButton",
+        "className": "guiser.component.UITabNavigatorButton",
         "properties": {
-          "ParentTag": "footerPanel",
+          "ParentTag": "footerGrid",
           "Text": "Next",
-          "Tag": "nextButton",
-          "Position": [390, 10, 100, 30]
+          "Tag": "nextTabButton",
+          "Layout": { "Row": 1, "Column": 3 },
+          "BackgroundColor": [1, 1, 1],
+          "direction": "next"
         }
     },
     {
@@ -69,67 +90,94 @@
       "properties": {
         "ParentTag": "mainTabGroup",
         "Title": "Tab 1",
-        "Tag": "tab1"
+        "Tag": "tab1",
+        "BackgroundColor": [0.0902, 0.6549, 1.0]
       }
     },
     {
       "className": "guiser.component.UIGridLayout",
       "properties": {
-        "Tag": "tab1Grid",
         "ParentTag": "tab1",
+        "Tag": "tab1ContentGrid",
+        "RowHeight": ["1x"],
+        "ColumnWidth": ["1x"],
+        "Padding": [10, 10, 10, 10],
+        "BackgroundColor": [0.0902, 0.6549, 1.0]
+      }
+    },
+    {
+      "className": "guiser.component.UIPanel",
+      "properties": {
+        "ParentTag": "tab1ContentGrid",
+        "Layout": { "Row": 1, "Column": 1 },
+        "Tag": "tab1TextBoxPanel",
+        "Title": "Some text boxes:",
+        "FontWeight": "bold",
+        "BackgroundColor": [1, 1, 1]
+      }
+    },
+    {
+      "className": "guiser.component.UIGridLayout",
+      "properties": {
+        "ParentTag": "tab1TextBoxPanel",
+        "Tag": "tab1TextBoxGrid",
         "RowHeight": [30, 30, 30, "1x"],
-        "ColumnWidth": [100, "1x"]
+        "ColumnWidth": [100, "1x"],
+        "BackgroundColor": [1, 1, 1]
       }
     },
     {
       "className": "guiser.component.UILabel",
       "properties": {
-        "ParentTag": "tab1Grid",
+        "ParentTag": "tab1TextBoxGrid",
         "Text": "Text Box 1:",
         "Layout": { "Row": 1, "Column": 1 },
-        "Tag": "labelTextBox1"
+        "Tag": "tab1LabelTextBox1"
       }
     },
     {
       "className": "guiser.component.UIEditField",
       "properties": {
-        "ParentTag": "tab1Grid",
-        "Tag": "textBox1",
-        "Layout": { "Row": 1, "Column": 2 }
+        "ParentTag": "tab1TextBoxGrid",
+        "Tag": "tab1TextBox1",
+        "Layout": { "Row": 1, "Column": 2 },
+        "Placeholder": "Enter Text Box 1 text here"
       }
     },
     {
       "className": "guiser.component.UILabel",
       "properties": {
-        "ParentTag": "tab1Grid",
+        "ParentTag": "tab1TextBoxGrid",
         "Text": "Text Box 2:",
         "Layout": { "Row": 2, "Column": 1 },
-        "Tag": "labelTextBox2"
+        "Tag": "tab1LabelTextBox2"
       }
     },
     {
       "className": "guiser.component.UIEditField",
       "properties": {
-        "ParentTag": "tab1Grid",
-        "Tag": "textBox2",
-        "Layout": { "Row": 2, "Column": 2 }
+        "ParentTag": "tab1TextBoxGrid",
+        "Tag": "tab1TextBox2",
+        "Layout": { "Row": 2, "Column": 2 },
+        "Placeholder": "Enter Text Box 2 text here"
       }
     },
     {
       "className": "guiser.component.UILabel",
       "properties": {
-        "ParentTag": "tab1Grid",
+        "ParentTag": "tab1TextBoxGrid",
         "Text": "Text Box 3:",
         "Layout": { "Row": 3, "Column": 1 },
-        "Tag": "labelTextBox3"
+        "Tag": "tab1LabelTextBox3"
       }
     },
     {
       "className": "guiser.component.UIEditField",
       "properties": {
-        "ParentTag": "tab1Grid",
-        "Tag": "textBox3",
-        "Layout": { "Row": 3, "Column": 2 }
+        "ParentTag": "tab1TextBoxGrid",
+        "Tag": "tab1TextBox3",
+        "Layout": { "Row": 3, "Column": 2 },
+        "Placeholder": "Enter Text Box 3 text here"
       }
     },
     {
@@ -137,89 +185,26 @@
       "properties": {
         "ParentTag": "mainTabGroup",
         "Title": "Tab 2",
-        "Tag": "tab2"
-      }
-    },
-    {
-      "className": "guiser.component.UIGridLayout",
-      "properties": {
-        "Tag": "tab2Grid",
-        "ParentTag": "tab2",
-        "RowHeight": ["1x", "1x"],
-        "ColumnWidth": ["1x"]
-      }
-    },
-    {
-      "className": "guiser.component.UIButtonGroup",
-      "properties": {
-        "ParentTag": "tab2Grid",
-        "Title": "Radio Buttons",
-        "Tag": "radioPanel",
-        "Layout": { "Row": 1, "Column": 1 },
-        "SelectedTag": "radioOption1"
-      }
-    },
-    {
-      "className": "guiser.component.UIRadioButton",
-      "properties": {
-        "ParentTag": "radioPanel",
-        "Text": "Radio Option 1",
-        "Tag": "radioOption1",
-        "Position": [10, 70, 150, 22]
-      }
-    },
-    {
-      "className": "guiser.component.UIRadioButton",
-      "properties": {
-        "ParentTag": "radioPanel",
-        "Text": "Radio Option 2",
-        "Tag": "radioOption2",
-        "Position": [10, 45, 150, 22]
-      }
-    },
-    {
-      "className": "guiser.component.UIRadioButton",
-      "properties": {
-        "ParentTag": "radioPanel",
-        "Text": "Radio Option 3",
-        "Tag": "radioOption3",
-        "Position": [10, 20, 150, 22]
+        "Tag": "tab2",
+        "BackgroundColor": [0.0902, 0.6549, 1.0]
       }
     },
     {
       "className": "guiser.component.UIPanel",
       "properties": {
-        "ParentTag": "tab2Grid",
-        "Title": "Checkboxes",
-        "Tag": "checkPanel",
-        "Layout": { "Row": 2, "Column": 1 }
+        "ParentTag": "tab2",
+        "Tag": "tab2Panel",
+        "Title": "A Text area:",
+        "FontWeight": "bold",
+        "BackgroundColor": [1, 1, 1]
       }
     },
     {
-      "className": "guiser.component.UICheckbox",
+      "className": "guiser.component.UITextArea",
       "properties": {
-        "ParentTag": "checkPanel",
-        "Text": "Checkbox 1",
-        "Tag": "checkbox1",
-        "Position": [10, 70, 150, 22]
-      }
-    },
-    {
-      "className": "guiser.component.UICheckbox",
-      "properties": {
-        "ParentTag": "checkPanel",
-        "Text": "Checkbox 2",
-        "Tag": "checkbox2",
-        "Position": [10, 45, 150, 22]
-      }
-    },
-    {
-      "className": "guiser.component.UICheckbox",
-      "properties": {
-        "ParentTag": "checkPanel",
-        "Text": "Checkbox 3",
-        "Tag": "checkbox3",
-        "Position": [10, 20, 150, 22]
+        "ParentTag": "tab2Panel",
+        "Tag": "tab2TextArea",
+        "Placeholder": "Enter some multi-line text here..."
       }
     },
     {
@@ -227,7 +212,8 @@
       "properties": {
         "ParentTag": "mainTabGroup",
         "Title": "Tab 3",
-        "Tag": "tab3"
+        "Tag": "tab3",
+        "BackgroundColor": [0.0902, 0.6549, 1.0]
       }
     },
     {
@@ -235,18 +221,252 @@
       "properties": {
         "Tag": "tab3Grid",
         "ParentTag": "tab3",
-        "RowHeight": ["1x"],
-        "ColumnWidth": ["1x"]
+        "RowHeight": ["1x", "1x"],
+        "ColumnWidth": ["1x"],
+        "BackgroundColor": [0.0902, 0.6549, 1.0]
       }
+    },
+    {
+      "className": "guiser.component.UIButtonGroup",
+      "properties": {
+        "ParentTag": "tab3Grid",
+        "Title": "Radio Buttons",
+        "Tag": "tab3RadioPanel",
+        "Layout": { "Row": 1, "Column": 1 },
+        "FontWeight": "bold",
+        "BackgroundColor": [1, 1, 1]
+      }
+    },
+    {
+      "className": "guiser.component.UIRadioButton",
+      "properties": {
+        "ParentTag": "tab3RadioPanel",
+        "Text": "Radio Option 1",
+        "Tag": "tab3RadioOption1",
+        "Position": [10, 70, 150, 22]
+      }
+    },
+    {
+      "className": "guiser.component.UIRadioButton",
+      "properties": {
+        "ParentTag": "tab3RadioPanel",
+        "Text": "Radio Option 2",
+        "Tag": "tab3RadioOption2",
+        "Position": [10, 45, 150, 22]
+      }
+    },
+    {
+      "className": "guiser.component.UIRadioButton",
+      "properties": {
+        "ParentTag": "tab3RadioPanel",
+        "Text": "Radio Option 3",
+        "Tag": "tab3RadioOption3",
+        "Position": [10, 20, 150, 22]
+      }
+    },
+    {
+      "className": "guiser.component.UIPanel",
+      "properties": {
+        "ParentTag": "tab3Grid",
+        "Title": "Checkboxes",
+        "Tag": "tab3CheckPanel",
+        "Layout": { "Row": 2, "Column": 1 },
+        "BackgroundColor": [1, 1, 1],
+        "FontWeight": "bold"
+      }
+    },
+    {
+      "className": "guiser.component.UICheckbox",
+      "properties": {
+        "ParentTag": "tab3CheckPanel",
+        "Text": "Checkbox 1",
+        "Tag": "tab3Checkbox1",
+        "Position": [10, 70, 150, 22]
+      }
+    },
+    {
+      "className": "guiser.component.UICheckbox",
+      "properties": {
+        "ParentTag": "tab3CheckPanel",
+        "Text": "Checkbox 2",
+        "Tag": "tab3Checkbox2",
+        "Position": [10, 45, 150, 22]
+      }
+    },
+    {
+      "className": "guiser.component.UICheckbox",
+      "properties": {
+        "ParentTag": "tab3CheckPanel",
+        "Text": "Checkbox 3",
+        "Tag": "tab3Checkbox3",
+        "Position": [10, 20, 150, 22]
+      }
+    },
+    {
+      "className": "guiser.component.UITab",
+      "properties": {
+        "ParentTag": "mainTabGroup",
+        "Title": "Tab 4",
+        "Tag": "tab4",
+        "BackgroundColor": [0.0902, 0.6549, 1.0]
+      }
+    },
+    {
+      "className": "guiser.component.UIGridLayout",
+      "properties": {
+        "Tag": "tab4Grid",
+        "ParentTag": "tab4",
+        "RowHeight": ["fit", "1x"],
+        "ColumnWidth": ["1x", "fit"],
+        "BackgroundColor": [0.0902, 0.6549, 1.0]
+      }
+    },
+    {
+        "className": "guiser.component.UILabel",
+        "properties": {
+            "ParentTag": "tab4Grid",
+            "Tag": "addItemLabel",
+            "Text": "Add item:",
+            "Layout": { "Row": 1, "Column": 1 }
+        }
+    },
+    {
+        "className": "guiser.component.UIDropdown",
+        "properties": {
+            "ParentTag": "tab4Grid",
+            "Tag": "addItemDropdown",
+            "Layout": { "Row": 1, "Column": 1 },
+            "Items": ["", "New Item D", "New Item E", "New Item F"],
+            "Value": "",
+            "ValueChangedFcn": "DropdownValueChangedFcn"
+        }
     },
     {
       "className": "guiser.component.UIListbox",
       "properties": {
-        "ParentTag": "tab3Grid",
-        "Tag": "sampleListbox",
-        "Layout": { "Row": 1, "Column": 1 },
+        "ParentTag": "tab4Grid",
+        "Tag": "tab4SampleListbox",
+        "Layout": { "Row": 2, "Column": 1 },
         "Items": ["Item A", "Item B", "Item C"],
-        "Value": "Item B"
+        "Value": "Item B",
+        "ValueChangedFcn": "ValueChangedFcn"
+      }
+    },
+    {
+      "className": "guiser.component.UIGridLayout",
+      "properties": {
+        "Tag": "tab4ButtonGrid",
+        "ParentTag": "tab4Grid",
+        "Layout": { "Row": 2, "Column": 2 },
+        "RowHeight": ["fit", "fit", "fit", "fit"],
+        "ColumnWidth": ["fit"]
+      }
+    },
+    {
+      "className": "guiser.component.UIListboxEditButton",
+      "properties": {
+        "ParentTag": "tab4ButtonGrid",
+        "Tag": "listboxAddButton",
+        "Layout": { "Row": 1, "Column": 1 },
+        "action": "Add",
+        "ListboxTag": "tab4SampleListbox",
+        "Text": ""
+      }
+    },
+    {
+      "className": "guiser.component.UIListboxEditButton",
+      "properties": {
+        "ParentTag": "tab4ButtonGrid",
+        "Tag": "listboxRemoveButton",
+        "Layout": { "Row": 2, "Column": 1 },
+        "action": "Remove",
+        "ListboxTag": "tab4SampleListbox",
+        "Text": ""
+      }
+    },
+    {
+      "className": "guiser.component.UIListboxEditButton",
+      "properties": {
+        "ParentTag": "tab4ButtonGrid",
+        "Tag": "listboxMoveUpButton",
+        "Layout": { "Row": 3, "Column": 1 },
+        "action": "MoveUp",
+        "ListboxTag": "tab4SampleListbox",
+        "Text": ""
+      }
+    },
+    {
+      "className": "guiser.component.UIListboxEditButton",
+      "properties": {
+        "ParentTag": "tab4ButtonGrid",
+        "Tag": "listboxMoveDownButton",
+        "Layout": { "Row": 4, "Column": 1 },
+        "action": "MoveDown",
+        "ListboxTag": "tab4SampleListbox",
+        "Text": ""
+      }
+    },
+    {
+      "className": "guiser.component.UITab",
+      "properties": {
+        "ParentTag": "mainTabGroup",
+        "Title": "Tab 5",
+        "Tag": "tab5",
+        "BackgroundColor": [0.0902, 0.6549, 1.0]
+      }
+    },
+    {
+      "className": "guiser.component.UIPanel",
+      "properties": {
+        "ParentTag": "tab5",
+        "Tag": "tab5Panel",
+        "Title": "Context Menu Demo",
+        "BackgroundColor": [1, 1, 1]
+      }
+    },
+    {
+      "className": "guiser.component.UILabel",
+      "properties": {
+        "ParentTag": "tab5Panel",
+        "Tag": "contextLabel",
+        "Text": "Right-click this label for a context menu.",
+        "Position": [20, 100, 400, 22],
+        "ContextMenuTag": "myContextMenu"
+      }
+    },
+    {
+      "className": "guiser.component.UIContextMenu",
+      "properties": {
+        "ParentTag": "guiserExampleApp",
+        "Tag": "myContextMenu"
+      }
+    },
+    {
+      "className": "guiser.component.UIMenu",
+      "properties": {
+        "ParentTag": "myContextMenu",
+        "Tag": "menuItem1",
+        "Text": "Menu Option 1",
+        "MenuSelectedFcn": "MenuSelectedFcn"
+      }
+    },
+    {
+      "className": "guiser.component.UIMenu",
+      "properties": {
+        "ParentTag": "myContextMenu",
+        "Tag": "menuItem2",
+        "Text": "Menu Option 2",
+        "MenuSelectedFcn": "MenuSelectedFcn"
+      }
+    },
+    {
+      "className": "guiser.component.UIMenu",
+      "properties": {
+        "ParentTag": "myContextMenu",
+        "Tag": "menuItem3",
+        "Text": "A Separated Option",
+        "Separator": "on",
+        "MenuSelectedFcn": "MenuSelectedFcn"
       }
     }
   ]

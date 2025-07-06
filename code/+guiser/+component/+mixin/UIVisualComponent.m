@@ -4,6 +4,7 @@ classdef UIVisualComponent < handle
         Position = missing
         Layout (1,1) guiser.component.mixin.UILayout = guiser.component.mixin.UILayout('Row',[],'Column',[])
         Tooltip (1,1) string = missing
+        ContextMenuTag (1,1) string = missing        
     end
     methods
         function set.Position(obj, value)
