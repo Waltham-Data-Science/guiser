@@ -1,34 +1,52 @@
 # GUISER - GUI SERialized toolbox
 
-A toolbox for creating serialized graphical user interfaces in Matlab (and Python in the future), making cross-platform development easier.
+![Tests](.github/badges/tests.svg)
+![Code Issues](.github/badges/code_issues.svg)
 
-# Matlab-Toolbox
+**GUISER** is a powerful MATLAB toolbox designed to streamline the creation of complex graphical user interfaces. It allows developers to define and build UIs from serialized JSON files, promoting a clean, organized, and platform-independent development process. By separating the UI definition from the application logic, GUISER makes it easier to manage, version, and collaborate on sophisticated MATLAB applications.
 
-Template project for developing a MATLAB toolbox with git. This project includes:
-- `.gitignore` suitable for MATLAB projects
-- easy selection of a license among a common selection of commonly used licenses 
-- workflows for testing code on updates (push/PR) and for packaging a MATLAB toolbox (mltbx) on releases
-- predefined folder organization and some useful placeholder files
-- Integration with [MatBox](https://github.com/ehennestad/MatBox) that implements tasks to run during workflows and dependency management using a requirements.txt file
+This project is built upon a template that includes robust CI/CD workflows for automated testing and the packaging of the toolbox for distribution.
 
-To use this template, press the green "Use this template..." button in the upper right corner of this page and then follow the [post-setup instructions](#post-setup-instructions) below.
+***
+
+## Key Features
+
+* **Declarative UI Definition**: Define your entire application layout, including components, properties, and parent-child relationships, in a human-readable JSON file.
+* **Component-Based Architecture**: Build your UI from a library of pre-defined components (`UIButton`, `UIPanel`, `UIGridLayout`, etc.) that are easily configurable.
+* **Extensible by Design**: Easily create new, specialized components by inheriting from base classes and mixins to encapsulate custom behavior and simplify your UI definitions.
+* **Simplified Callback Management**: The framework provides a clean pattern for handling UI events, allowing for default behaviors that can be easily extended with custom user code.
+* **Automatic UI Generation**: The `guiser.App.class.base` class handles the heavy lifting of parsing the JSON definition and constructing the live MATLAB UI, letting you focus on your app's core logic.
+
+***
+
+## Quick Start: See It in Action
+
+To see a demonstration of the GUISER framework, simply run the included example application. Make sure the `guiser` toolbox is on your MATLAB path, and then execute the following command:
+
+```matlab
+app = guiser.App.class.ExampleApp();
+````
+
+This will launch a sample application that showcases various UI components and their interactions, all built from the `guiserExampleApp.json` definition file.
+
+-----
+
+## Documentation
+
+This repository contains extensive documentation to help you get started and master the GUISER framework.
+
+  * **[Creating a UI Definition (JSON)](https://www.google.com/url?sa=E&source=gmail&q=https://github.com/Waltham-Data-Science/guiser/blob/main/guiser/code/resources/apps/README.md)**: Learn the structure of the JSON file, how to define the data model, and how to list and configure UI components.
+  * **[UI Component Reference](https://www.google.com/url?sa=E&source=gmail&q=https://github.com/Waltham-Data-Science/guiser/blob/main/ComponentGuide.md)**: A comprehensive reference guide for all available UI components and their configurable parameters.
+  * **[Creating New Components](https://www.google.com/url?sa=E&source=gmail&q=https://github.com/Waltham-Data-Science/guiser/blob/main/guiser/code/+guiser/+component/CreatingNewObjects.md)**: A step-by-step guide on how to create your own custom UI components to extend the framework.
+
+-----
 
 ## Requirements
-It is recommended to use **MATLAB R2023a** or later. Toolbox packaging will only work with R2023 or later, other functionality of the toolbox should work with older releases as well. 
 
+  * **MATLAB R2023a** or later is recommended. The toolbox packaging features specifically require a recent MATLAB version.
 
-## Post-Setup Instructions
+-----
 
-### Step 1
-After creating a repository from this template, please follow these steps:
+## Support & Contributing
 
-1. Go to your repository's `Settings` tab.
-2. Under `Actions`, click `General`.
-3. In the `Workflow permissions` section, enable `Read and write permissions`.
-4. Save the changes.
-
-This will allow the GitHub Actions workflow to push changes and configure the repository when you edit the `config.yaml` file.
-
-### Step 2
-1. Edit the `config.yaml file` and fill out all the variables.
-2. Commit and push the `config.yaml` back to the repository. A GitHub action will run and fill out template variables in files and folders of the repository.
+If you need help, have a feature request, or would like to report a bug, please [create an issue](https://www.google.com/url?sa=E&source=gmail&q=https://github.com/Waltham-Data-Science/guiser/issues) on our GitHub page. We also welcome contributions\!
