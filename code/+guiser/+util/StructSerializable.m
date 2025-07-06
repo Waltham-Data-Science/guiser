@@ -134,39 +134,43 @@ classdef StructSerializable < handle
                     try
                         propMeta = findprop(obj, fn);
                         
-                        % CORRECTED: Check if the property is constant or dependent.
-                        % If so, skip it, as it cannot be set directly.
                         if propMeta.Constant || propMeta.Dependent
                             continue;
                         end
 
-                        propTypeStr = '';
-                        isSSubclass = false;
-                        
-                        if ~isempty(propMeta.Validation) && ~isempty(propMeta.Validation.Class)
-                            propMetaClass = propMeta.Validation.Class;
-                            propTypeStr = propMetaClass.Name;
-                            if propMetaClass <= ?guiser.util.StructSerializable
-                                isSSubclass = true;
-                            end
-                        end
-                        
-                        if isstruct(S_in.(fn)) && isSSubclass
-                            if isscalar(S_in.(fn))
-                                % Recursive call for a scalar nested object
-                                obj.(fn) = guiser.util.StructSerializable.fromStruct(propTypeStr, S_in.(fn), 'errorIfFieldNotPresent',options.errorIfFieldNotPresent);
-                            else
-                                % Loop through the struct array for a nested object array
-                                struct_array_in = S_in.(fn);
-                                obj_array = feval(propTypeStr).empty(0,0); % Create typed empty array
-                                for k = 1:numel(struct_array_in)
-                                    obj_array(k) = guiser.util.StructSerializable.fromStruct(propTypeStr, struct_array_in(k), 'errorIfFieldNotPresent',options.errorIfFieldNotPresent);
-                                end
-                                obj.(fn) = reshape(obj_array, size(struct_array_in));
-                            end
+                        fieldValue = S_in.(fn);
+
+                        if ischar(fieldValue) && strcmp(fieldValue, '<missing>')
+                            obj.(fn) = missing;
                         else
-                            % Otherwise, perform direct assignment.
-                            obj.(fn) = S_in.(fn); 
+                            propTypeStr = '';
+                            isSSubclass = false;
+                            
+                            if ~isempty(propMeta.Validation) && ~isempty(propMeta.Validation.Class)
+                                propMetaClass = propMeta.Validation.Class;
+                                propTypeStr = propMetaClass.Name;
+                                if propMetaClass <= ?guiser.util.StructSerializable
+                                    isSSubclass = true;
+                                end
+                            end
+                            
+                            if isstruct(fieldValue) && isSSubclass
+                                if isscalar(fieldValue)
+                                    % Recursive call for a scalar nested object
+                                    obj.(fn) = guiser.util.StructSerializable.fromStruct(propTypeStr, fieldValue, 'errorIfFieldNotPresent',options.errorIfFieldNotPresent);
+                                else
+                                    % Loop through the struct array for a nested object array
+                                    struct_array_in = fieldValue;
+                                    obj_array = feval(propTypeStr).empty(0,0); % Create typed empty array
+                                    for k = 1:numel(struct_array_in)
+                                        obj_array(k) = guiser.util.StructSerializable.fromStruct(propTypeStr, struct_array_in(k), 'errorIfFieldNotPresent',options.errorIfFieldNotPresent);
+                                    end
+                                    obj.(fn) = reshape(obj_array, size(struct_array_in));
+                                end
+                            else
+                                % Otherwise, perform direct assignment.
+                                obj.(fn) = fieldValue; 
+                            end
                         end
                     catch ME
                         newEx = MException('StructSerializable:fromStruct:PropertySetError', ...

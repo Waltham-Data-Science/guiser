@@ -6,7 +6,7 @@ classdef UIText < handle
 
     properties
         % Text - The primary text displayed by the component.
-        Text (1,:) char = ''
+        Text (1,1) string = missing
     end
 
 end

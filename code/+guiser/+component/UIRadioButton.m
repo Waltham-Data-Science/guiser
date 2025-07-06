@@ -1,0 +1,19 @@
+% UIRadioButton.m
+classdef UIRadioButton < guiser.component.UIElement & ...
+                         guiser.component.mixin.UIVisualComponent & ...
+                         guiser.component.mixin.UIVisible & ...
+                         guiser.component.mixin.UITextComponent & ...
+                         guiser.component.mixin.UIInteractiveComponent & ...
+                         guiser.component.mixin.UITFValue & ...
+                         guiser.component.mixin.UIText
+    % UIRADIOBUTTON Describes a radio button UI component.
+    %
+    % This class should be used within a UIButtonGroup to ensure
+    % mutually exclusive selection.
+
+    properties
+        % The Value property (inherited from UITFValue) for a radio button is
+        % a logical that is TRUE when selected and FALSE otherwise.
+    end
+   
+end

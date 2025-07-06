@@ -1,4 +1,4 @@
-classdef UIValue < handle
+classdef UITFValue < handle
     % UIVALUE A mixin class for describing a component that holds a value.
     %
     % This class provides a generic 'Value' property. The data type is
@@ -7,7 +7,7 @@ classdef UIValue < handle
 
     properties
         % Value - The current value of the component.
-        Value = missing
+        Value (1,1) {guiser.validators.mustBeLogicalOrMissing} = missing
     end
 
 end

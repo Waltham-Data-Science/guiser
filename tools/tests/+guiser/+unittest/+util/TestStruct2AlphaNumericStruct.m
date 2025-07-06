@@ -147,6 +147,19 @@ classdef TestStruct2AlphaNumericStruct < matlab.unittest.TestCase
             testCase.assertEqual(s_out(2,2).name, 'D');
             testCase.assertEqual(s_out(2,2).value, 22);
         end
+
+        function testMissingValueConversion(testCase)
+            % Test that a field with a 'missing' value is converted to the '<missing>' string.
+            s.myOptionalProp = missing;
+            s.anotherProp = 123;
+            s.nested.isMissing = missing;
+    
+            s_out = guiser.util.Struct2AlphaNumericStruct(s);
+    
+            testCase.verifyEqual(s_out.myOptionalProp, '<missing>');
+            testCase.verifyEqual(s_out.anotherProp, 123);
+            testCase.verifyEqual(s_out.nested.isMissing, '<missing>');
+        end
         
         % --- Tests for Invalid Types ---
         function testErrorInvalidCellContent_Numeric(testCase)
