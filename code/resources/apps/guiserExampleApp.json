@@ -9,7 +9,8 @@
       "tab3Checkbox1": false,
       "tab3Checkbox2": false,
       "tab3Checkbox3": false,
-      "tab4SampleListbox": "Item B"
+      "tab4SampleListbox": "Item B",
+      "demoTable": {}
     }
   },
   "guiComponents": [
@@ -467,6 +468,42 @@
         "Text": "A Separated Option",
         "Separator": "on",
         "MenuSelectedFcn": "MenuSelectedFcn"
+      }
+    },
+    {
+      "className": "guiser.component.UITab",
+      "properties": {
+        "ParentTag": "mainTabGroup",
+        "Title": "Tab 6",
+        "Tag": "tab6",
+        "BackgroundColor": [0.0902, 0.6549, 1.0]
+      }
+    },
+    {
+      "className": "guiser.component.UIGridLayout",
+      "properties": {
+        "ParentTag": "tab6",
+        "Tag": "tab6Grid",
+        "RowHeight": ["1x"],
+        "ColumnWidth": ["1x"],
+        "Padding": [10, 10, 10, 10]
+      }
+    },
+    {
+      "className": "guiser.component.UITable",
+      "properties": {
+        "ParentTag": "tab6Grid",
+        "Tag": "demoTable",
+        "Layout": { "Row": 1, "Column": 1 },
+        "Data": [
+          { "Name": "John Doe", "Age": 38, "IsAdmin": true },
+          { "Name": "Jane Smith", "Age": 29, "IsAdmin": false },
+          { "Name": "Sam Brown", "Age": 45, "IsAdmin": true }
+        ],
+        "ColumnName": ["Name", "Age", "Is Admin?"],
+        "ColumnEditable": [false, true, true],
+        "ColumnWidth": [120, 50, "auto"],
+        "CellEditCallback": "MyCellEditCallback"
       }
     }
   ]

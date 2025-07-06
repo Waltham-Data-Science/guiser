@@ -81,6 +81,47 @@ classdef baseCallbacks < handle
             end
         end
 
+        function DefaultCellEditFcn(app, src, evt)
+            %DefaultCellEditFcn Default callback for when a table cell is edited.
+            %   This function provides the basic two-way data binding for a UITable.
+            %   It updates the 'Data' property of the corresponding UITable component
+            %   object with the new value entered by the user.
+
+            % Extract the base tag of the component that triggered the callback.
+            tag_parts = strsplit(src.Tag, '_');
+            baseTag = tag_parts{1};
+
+            % Check if the component object exists in the app's model.
+            if isfield(app.ComponentObjects, baseTag)
+                % Get the component object (the UITable object).
+                componentObj = app.ComponentObjects.(baseTag);
+
+                % Get the indices of the edited cell [row, column].
+                indices = evt.Indices;
+                row = indices(1);
+                col = indices(2);
+
+                % Get the new data from the event.
+                newData = evt.NewData;
+
+                % Update the data in the component object's 'Data' property.
+                % This cell-style assignment works for both table and cell array data types.
+                try
+                    componentObj.Data(row, col) = {newData};
+                catch ME
+                    warning('GUISER:Callback:CellEditFailed', ...
+                        'Failed to update table data for component "%s". Error: %s', baseTag, ME.message);
+                    return;
+                end
+
+                % Write the modified component object back to the app's model.
+                app.ComponentObjects.(baseTag) = componentObj;
+
+                % Update the enable/disable state of other components if necessary.
+                app.EnableDisable();
+            end
+        end
+
         function TabNavigatorButtonPushedFcn(app, src, ~)
             % TabNavigatorButtonPushedFcn Callback for UITabNavigatorButton clicks.
             tabGroupHandle = [];

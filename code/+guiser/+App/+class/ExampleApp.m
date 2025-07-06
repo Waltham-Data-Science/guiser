@@ -2,10 +2,10 @@
 classdef ExampleApp < guiser.App.class.base
 % EXAMPLEAPP A minimal example application built on the GUISER framework.
 %
-% This class demonstrates the basic architecture of a GUISER app. It
-% inherits from the base class and, in its constructor, specifies the
-% path to its JSON definition file. The base class handles all the
-% heavy lifting of parsing the JSON and building the GUI.
+% This class demonstrates the basic architecture of a GUISER app.
+% It inherits from the base class and, in its constructor, specifies the
+% path to its JSON definition file.
+% The base class handles all the heavy lifting of parsing the JSON and building the GUI.
 %
 % To run this example:
 %   app = guiser.App.class.ExampleApp();
@@ -31,13 +31,11 @@ classdef ExampleApp < guiser.App.class.base
 
         function UserStartup(app)
             % UserStartup Overrides the base class method for custom startup code.
-            
             % Any custom app startup code goes here
         end
 
         function EnableDisable(app)
             % EnableDisable Overrides the base class method for custom UI state logic.
-            
             % Call the parent method first to handle default behavior (like tab buttons)
             EnableDisable@guiser.App.class.base(app);
             
@@ -46,10 +44,9 @@ classdef ExampleApp < guiser.App.class.base
 
         function ValueChangedFcn(app, src, evt)
             % ValueChangedFcn Overrides the base class method for custom callback logic.
-            
             % Call the parent method first to get all the default behavior.
             ValueChangedFcn@guiser.App.class.base(app, src, evt);
-
+            
             % Custom user code to respond to the value change goes here.
             % For example:
             % disp(['Value changed for component with tag: ' src.Tag]);
@@ -57,7 +54,6 @@ classdef ExampleApp < guiser.App.class.base
 
         function DropdownValueChangedFcn(app, src, evt)
             % DropdownValueChangedFcn Custom callback for the Add Item dropdown.
-
             % Do nothing if the user selected the blank item
             if strcmp(evt.Value, "")
                 return;
@@ -65,22 +61,38 @@ classdef ExampleApp < guiser.App.class.base
 
             % Get the component object for the listbox
             listboxObj = app.ComponentObjects.tab4SampleListbox;
-
+            
             % Add the selected value from the dropdown to the listbox's items
             listboxObj.Items{end+1,1} = evt.Value;
             
             % Write the modified object back to the main app struct
             app.ComponentObjects.tab4SampleListbox = listboxObj;
-
+            
             % Tell the framework to push all model changes to the live UI
             app.updateUIFromComponents();
-
+            
             % Reset the dropdown to the blank value
             dropdownObj = app.ComponentObjects.addItemDropdown;
             dropdownHandle = app.UIHandles.addItemDropdown;
             dropdownObj.Value = "";
             app.ComponentObjects.addItemDropdown = dropdownObj; % Write back the change
             dropdownHandle.Value = "";
+        end
+        
+        function MyCellEditCallback(app, src, evt)
+            % MyCellEditCallback Custom callback for the table cell edit event.
+            
+            % First, call the default callback from the base class.
+            % This handles the essential task of updating the data model.
+            app.DefaultCellEditFcn(src, evt);
+
+            % Now, you can add your own custom logic to run after the update.
+            % This demonstrates how a user can extend the default behavior.
+            indices = evt.Indices;
+            newValue = evt.NewData;
+            
+            fprintf('User edited cell (%d, %d). New value: %s\n', ...
+                indices(1), indices(2), string(newValue));
         end
 
         function shouldClose = UserCloseWindowFcn(app, figHandle)
@@ -93,7 +105,7 @@ classdef ExampleApp < guiser.App.class.base
             end
             
             % Otherwise, prompt the user for confirmation.
-            answer = uiconfirm(figHandle, 'Save changes before closing?', 'Confirm Close');
+            answer = uiconfirm(figHandle, 'Really close?', 'Confirm Close');
             switch answer
                  case 'OK'
                      shouldClose = true;
@@ -127,7 +139,7 @@ classdef ExampleApp < guiser.App.class.base
 
         function UserListboxEditButtonAddAction(app, listboxHandle)
             % UserListboxEditButtonAddAction Overrides the base class method to add a new item.
-
+            
             % Prompt the user for a new item
             newItem = inputdlg('Enter new item:','Add Item', [1 50]);
             
@@ -140,13 +152,13 @@ classdef ExampleApp < guiser.App.class.base
 
                 % Preserve the current selection
                 currentValue = listboxHandle.Value;
-
+                
                 % Update the component object (the model)
                 listboxObj.Items{end+1} = newItem{1};
                 
                 % Update the UI handle (the view)
                 listboxHandle.Items = listboxObj.Items;
-
+                
                 % Restore the selection
                 listboxHandle.Value = currentValue;
                 

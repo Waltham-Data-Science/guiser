@@ -327,5 +327,25 @@
       { "guiserTerm": "ValueChangedFcn", "matlabTerm": "ValueChangedFcn", "isReadOnly": false, "isPostBuild": false },
       { "guiserTerm": "DoubleClickFcn", "matlabTerm": "DoubleClickFcn", "isReadOnly": false, "isPostBuild": false }
     ]
+  },
+  {
+    "className": "guiser.component.UITable",
+    "mappings": [
+      { "guiserTerm": "Data", "matlabTerm": "Data", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "ColumnName", "matlabTerm": "ColumnName", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "ColumnWidth", "matlabTerm": "ColumnWidth", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "ColumnEditable", "matlabTerm": "ColumnEditable", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "RowName", "matlabTerm": "RowName", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "CellEditCallback", "matlabTerm": "CellEditCallback", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "CellSelectionCallback", "matlabTerm": "CellSelectionCallback", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "Position", "matlabTerm": "Position", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "Visible", "matlabTerm": "Visible", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "Tag", "matlabTerm": "Tag", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "UserData", "matlabTerm": "UserData", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "Units", "matlabTerm": "Units", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "Layout", "matlabTerm": "Layout", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "Enable", "matlabTerm": "Enable", "isReadOnly": false, "isPostBuild": false },
+      { "guiserTerm": "Tooltip", "matlabTerm": "Tooltip", "isReadOnly": false, "isPostBuild": false }
+    ]
   }
 ]

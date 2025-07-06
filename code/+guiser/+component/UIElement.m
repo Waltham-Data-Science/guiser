@@ -1,12 +1,11 @@
 % UIElement.m
 classdef UIElement < guiser.util.StructSerializable & matlab.mixin.Heterogeneous
     % UIELEMENT A base class for describing a generic UI element.
-    
     properties (Constant)
         CallbackProperties = {'ButtonPushedFcn', 'ValueChangedFcn', ...
                               'ValueChangingFcn', 'CloseRequestFcn', ...
                               'OpeningFcn', 'DoubleClickFcn', 'SelectionChangedFcn', ...
-                              'MenuSelectedFcn'};
+                              'MenuSelectedFcn', 'CellEditCallback', 'CellSelectionCallback'};
     end
 
     properties
@@ -34,6 +33,11 @@ classdef UIElement < guiser.util.StructSerializable & matlab.mixin.Heterogeneous
             
             if isa(obj, 'guiser.component.UIButton')
                 value = 'uibutton';
+                return;
+            end
+
+            if isa(obj, 'guiser.component.UITable')
+                value = 'uitable';
                 return;
             end
 
@@ -70,7 +74,6 @@ classdef UIElement < guiser.util.StructSerializable & matlab.mixin.Heterogeneous
             end
             
             nvPairs = obj.getNVProperties(app);
-            
             creatorFuncHandle = str2func(obj.creatorFcn);
             if isempty(parentHandle)
                 h = creatorFuncHandle(nvPairs{:});
@@ -130,7 +133,8 @@ classdef UIElement < guiser.util.StructSerializable & matlab.mixin.Heterogeneous
             % Handle context menu attachment
             if isprop(obj, 'ContextMenuTag') && ~ismissing(obj.ContextMenuTag)
                 if isfield(app.UIHandles, obj.Tag) && isfield(app.UIHandles, char(obj.ContextMenuTag))
-                    targetHandle = app.UIHandles.(obj.Tag);
+             
+                   targetHandle = app.UIHandles.(obj.Tag);
                     contextMenuHandle = app.UIHandles.(char(obj.ContextMenuTag));
                     targetHandle.ContextMenu = contextMenuHandle;
                 end
@@ -144,22 +148,18 @@ classdef UIElement < guiser.util.StructSerializable & matlab.mixin.Heterogeneous
             % This is the core translation logic, used for both creation and updates.
             nvPairs = {};
             propList = properties(obj);
-            
             for i=1:numel(propList)
                 guiserTerm = propList{i};
-
                 if strcmp(guiserTerm, 'Layout')
                     continue;
                 end
 
                 [matlabTerm, isReadOnly, isPostBuild] = guiser.component.UIElement.getMatlabTerm(class(obj), guiserTerm);
-                
                 if isempty(matlabTerm) || isReadOnly || isPostBuild
                     continue;
                 end
 
                 propValue = obj.(guiserTerm);
-
                 if ismissing(propValue)
                     continue;
                 end
@@ -168,7 +168,21 @@ classdef UIElement < guiser.util.StructSerializable & matlab.mixin.Heterogeneous
                     propValue = char(propValue);
                 end
 
-                if strcmp(guiserTerm, 'Tag')
+                if isa(obj, 'guiser.component.UITable') && strcmp(guiserTerm, 'Data') && istable(propValue)
+                    % Special case for UITable: convert table data to a cell array.
+                    cellData = table2cell(propValue);
+                    % Also, uitable requires char vectors for text, not strings. Convert any strings.
+                    stringCells = cellfun(@isstring, cellData);
+                    cellData(stringCells) = cellfun(@char, cellData(stringCells), 'UniformOutput', false);
+                    finalValue = cellData;
+                elseif isa(obj, 'guiser.component.UITable') && strcmp(guiserTerm, 'RowName')
+                    % Special case for RowName: if it's {'numbered'}, convert to the keyword 'numbered'.
+                    if iscell(propValue) && isscalar(propValue) && strcmp(propValue{1}, 'numbered')
+                        finalValue = 'numbered';
+                    else
+                        finalValue = propValue;
+                    end
+                elseif strcmp(guiserTerm, 'Tag')
                     finalValue = [propValue, '_', app.AppUID];
                 elseif strcmp(guiserTerm, 'Icon')
                     if ~isempty(propValue)
@@ -221,7 +235,8 @@ classdef UIElement < guiser.util.StructSerializable & matlab.mixin.Heterogeneous
                         for j = 1:numel(classMappings)
                             mapping = classMappings(j);
                             if ~isfield(mapping, 'isReadOnly'), mapping.isReadOnly = false; end
-                            if ~isfield(mapping, 'isPostBuild'), mapping.isPostBuild = false; end
+                            if ~isfield(mapping, 'isPostBuild'), mapping.isPostBuild = false;
+                            end
                             innerMap(mapping.guiserTerm) = mapping;
                         end
                         propertyMap(cn) = innerMap;
