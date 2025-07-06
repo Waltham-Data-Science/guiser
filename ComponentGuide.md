@@ -1,12 +1,10 @@
 # GUISER UI Component Reference
 
 This document provides a comprehensive reference for all UI component classes available in the GUISER framework. Each entry details the purpose of the component and the parameters available for configuration in the JSON definition file.
-
 ---
 
 ## guiser.component.UIButton
 A standard push button that a user can click to trigger an action.
-
 ### Parameters
 * **BackgroundColor**: Sets the background color of the button. This should be a 1x3 RGB triplet with values from 0 to 1 (e.g., `[1 1 1]` for white) or a valid MATLAB color name string.
 * **ButtonPushedFcn**: Specifies the name of the app method to execute when the button is clicked. This must be a string that matches the name of a public method in your app class.
@@ -30,7 +28,6 @@ A standard push button that a user can click to trigger an action.
 
 ## guiser.component.UIButtonGroup
 A container for radio buttons or toggle buttons that enforces mutually exclusive selection.
-
 ### Parameters
 * **BackgroundColor**: Sets the background color of the button group panel. This should be a 1x3 RGB triplet with values from 0 to 1 or a valid MATLAB color name string.
 * **BorderType**: Defines the style of the border around the panel. Valid values are strings like `'none'`, `'line'`, `'beveledin'`, `'beveledout'`, `'etchedin'`, or `'etchedout'`.
@@ -47,12 +44,10 @@ A container for radio buttons or toggle buttons that enforces mutually exclusive
 * **Tag**: A unique string identifier for this button group.
 * **Title**: The text that appears as the title of the button group panel. This should be a string.
 * **Visible**: Controls the visibility of the button group. Valid values are the strings `'on'` (default) or `'off'`.
-
 ---
 
 ## guiser.component.UICheckbox
 A checkbox that a user can select or deselect to represent a logical state (true/false).
-
 ### Parameters
 * **BackgroundColor**: Sets the background color of the checkbox component. This should be a 1x3 RGB triplet with values from 0 to 1 or a valid MATLAB color name string.
 * **Enable**: Controls whether the checkbox is interactive. Valid values are the strings `'on'` (default) or `'off'`.
@@ -70,12 +65,10 @@ A checkbox that a user can select or deselect to represent a logical state (true
 * **Value**: The logical state of the checkbox. This must be a boolean value, `true` or `false`.
 * **ValueChangedFcn**: Specifies the name of the app method to execute when the checkbox is checked or unchecked. This must be a string that matches the name of a public method in your app class.
 * **Visible**: Controls the visibility of the checkbox. Valid values are the strings `'on'` (default) or `'off'`.
-
 ---
 
 ## guiser.component.UIEditField
 A single-line text box where a user can enter or edit text.
-
 ### Parameters
 * **BackgroundColor**: Sets the background color of the edit field. This should be a 1x3 RGB triplet with values from 0 to 1 or a valid MATLAB color name string.
 * **Enable**: Controls whether the edit field is interactive. Valid values are the strings `'on'` (default) or `'off'`.
@@ -95,12 +88,10 @@ A single-line text box where a user can enter or edit text.
 * **ValueChangedFcn**: Specifies the name of the app method to execute after the user finalizes a change (e.g., presses Enter). This must be a string that matches a public method name in your app class.
 * **ValueChangingFcn**: Specifies the name of the app method to execute as the user is typing. This must be a string that matches a public method name in your app class.
 * **Visible**: Controls the visibility of the edit field. Valid values are the strings `'on'` (default) or `'off'`.
-
 ---
 
 ## guiser.component.UIFigure
 The main application window that contains all other UI components.
-
 ### Parameters
 * **CloseRequestFcn**: Specifies the name of the app method to execute when a user attempts to close the figure. This must be a string that matches a public method name in your app class.
 * **Color**: Sets the background color of the figure window. This should be a 1x3 RGB triplet with values from 0 to 1 or a valid MATLAB color name string.
@@ -113,7 +104,6 @@ The main application window that contains all other UI components.
 
 ## guiser.component.UIGridLayout
 A layout manager that arranges components in a grid.
-
 ### Parameters
 * **BackgroundColor**: Sets the background color of the grid layout area. This should be a 1x3 RGB triplet with values from 0 to 1 or a valid MATLAB color name string.
 * **ColumnSpacing**: The amount of space in pixels between columns. This must be a non-negative numeric value.
@@ -130,7 +120,6 @@ A layout manager that arranges components in a grid.
 
 ## guiser.component.UILabel
 A static text label used to display non-interactive text.
-
 ### Parameters
 * **BackgroundColor**: Sets the background color of the label. This should be a 1x3 RGB triplet with values from 0 to 1 or a valid MATLAB color name string.
 * **FontAngle**: Sets the angle of the label's text font. Valid values are the strings `'normal'` (default) or `'italic'`.
@@ -151,7 +140,6 @@ A static text label used to display non-interactive text.
 
 ## guiser.component.UIListbox
 A list box that displays a list of items for user selection.
-
 ### Parameters
 * **BackgroundColor**: Sets the background color of the listbox. This should be a 1x3 RGB triplet with values from 0 to 1 or a valid MATLAB color name string.
 * **DoubleClickFcn**: Specifies the name of the app method to execute when an item is double-clicked. This must be a string matching a public method name in your app class.
@@ -166,12 +154,10 @@ A list box that displays a list of items for user selection.
 * **Value**: The currently selected item or items. This must be a string (for single selection) or an array of strings (for multi-select) that matches an entry in the `Items` property.
 * **ValueChangedFcn**: Specifies the name of the app method to execute when the selection changes. This must be a string matching a public method name in your app class.
 * **Visible**: Controls the visibility of the listbox. Valid values are the strings `'on'` (default) or `'off'`.
-
 ---
 
 ## guiser.component.UIPanel
 A container component that can group other components and display a title and border.
-
 ### Parameters
 * **BackgroundColor**: Sets the background color of the panel. This should be a 1x3 RGB triplet with values from 0 to 1 or a valid MATLAB color name string.
 * **BorderType**: Defines the style of the border around the panel. Valid values are strings like `'none'`, `'line'`, `'beveledin'`, `'beveledout'`, `'etchedin'`, or `'etchedout'`.
@@ -191,7 +177,6 @@ A container component that can group other components and display a title and bo
 
 ## guiser.component.UIRadioButton
 A radio button, which is typically used within a `UIButtonGroup` for exclusive selection.
-
 ### Parameters
 * **BackgroundColor**: Sets the background color of the radio button component. This should be a 1x3 RGB triplet with values from 0 to 1 or a valid MATLAB color name string.
 * **Enable**: Controls whether the radio button is interactive. Valid values are the strings `'on'` (default) or `'off'`.
@@ -208,7 +193,6 @@ A radio button, which is typically used within a `UIButtonGroup` for exclusive s
 * **Tooltip**: A string of text that appears when the user hovers the mouse over the radio button.
 * **Value**: The logical state of the radio button. This must be a boolean value, `true` (if selected) or `false`.
 * **Visible**: Controls the visibility of the radio button. Valid values are the strings `'on'` (default) or `'off'`.
-
 ---
 
 ## guiser.component.UITab
@@ -224,7 +208,6 @@ A single tab within a `UITabGroup`.
 
 ## guiser.component.UITabGroup
 A container that manages a collection of `UITab` components.
-
 ### Parameters
 * **Layout**: Specifies the tab group's position within a `UIGridLayout`. This should be an object with `Row` and `Column` properties.
 * **ParentTag**: The tag of the parent component. This must be a string matching the `Tag` of a container component.
@@ -236,9 +219,36 @@ A container that manages a collection of `UITab` components.
 
 ---
 
+## guiser.component.UITable
+A component for displaying data in a scrollable grid or table.
+
+### Parameters
+* **CellEditCallback**: The name of the app method to execute when a user edits an editable cell.
+* **CellSelectionCallback**: The name of the app method to execute when a user selects a cell.
+* **ColumnEditable**: A logical array (e.g., `[false, true, true]`) specifying which columns can be edited by the user.
+* **ColumnName**: A JSON array of strings to use as headers for the table columns.
+* **ColumnWidth**: A JSON array where each element is a number (pixels) or a string (like `'auto'` or `'1x'`).
+* **Data**: The data for the table. In JSON, this **must** be an array of objects, where each object represents one row and each key-value pair represents a cell in that row. This structure is required for the data to be processed correctly. For example:
+    ```json
+    "Data": [
+      { "Name": "John Doe", "Age": 38, "IsAdmin": true },
+      { "Name": "Jane Smith", "Age": 29, "IsAdmin": false }
+    ]
+    ```
+* **Enable**: Controls whether the table is interactive. Valid values are `'on'` or `'off'`.
+* **Layout**: Specifies the table's position within a `UIGridLayout`.
+* **ParentTag**: The tag of the parent component.
+* **Position**: The size and location of the table in pixels `[left, bottom, width, height]`.
+* **RowName**: A JSON array of strings for row headers, or the string `'numbered'`.
+* **Tag**: A unique string identifier for this table.
+* **Tooltip**: A string of text that appears when the user hovers the mouse over the table.
+* **Units**: Specifies the units for the `Position` property. Valid values are strings like `'pixels'` or `'normalized'`.
+* **Visible**: Controls the visibility of the table. Valid values are `'on'` or `'off'`.
+
+---
+
 ## guiser.component.UITextArea
 A multi-line text box for entering or editing larger blocks of text.
-
 ### Parameters
 * **BackgroundColor**: Sets the background color of the text area. This should be a 1x3 RGB triplet with values from 0 to 1 or a valid MATLAB color name string.
 * **Enable**: Controls whether the text area is interactive. Valid values are the strings `'on'` (default) or `'off'`.
