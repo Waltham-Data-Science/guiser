@@ -37,7 +37,7 @@ This repository contains extensive documentation to help you get started and mas
 
   * **[Creating a UI Definition (JSON)](https://www.google.com/url?sa=E&source=gmail&q=https://github.com/Waltham-Data-Science/guiser/blob/main/guiser/code/resources/apps/README.md)**: Learn the structure of the JSON file, how to define the data model, and how to list and configure UI components.
   * **[UI Component Reference](https://www.google.com/url?sa=E&source=gmail&q=https://github.com/Waltham-Data-Science/guiser/blob/main/ComponentGuide.md)**: A comprehensive reference guide for all available UI components and their configurable parameters.
-  * **[Creating New Components](https://www.google.com/url?sa=E&source=gmail&q=https://github.com/Waltham-Data-Science/guiser/blob/main/guiser/code/+guiser/+component/CreatingNewObjects.md)**: A step-by-step guide on how to create your own custom UI components to extend the framework.
+  * **[Creating New Components](https://www.google.com/url?sa=E&source=gmail&q=https://github.com/Waltham-Data-Science/guiser/blob/main/code/+guiser/+component/CreatingNewObjects.md)**: A step-by-step guide on how to create your own custom UI components to extend the framework.
 
 -----
 
